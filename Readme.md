@@ -1,170 +1,187 @@
-🧑‍💻 Meeting App – Backend
+Meeting App – Frontend
 
-A real-time meeting application backend built using Node.js, Express, Socket.IO, and WebRTC, with MongoDB for data storage and Cloudinary for media handling.
-
-This backend handles:
-
-Authentication
-
-Meeting creation & management
-
-Real-time signaling for audio/video calls
-
-Media uploads
-
-Secure and scalable APIs
+This is the frontend of the Meeting App, built using React, Vite, and Tailwind CSS.
+It handles the user interface for authentication, meeting rooms, and real-time interaction with the backend using Socket.IO and WebRTC.
 
 🚀 Tech Stack
 
-Node.js
+React
 
-Express
+Vite
 
-Socket.IO
+Tailwind CSS
 
-WebRTC (Real-Time Communication)
+Socket.IO Client
 
-MongoDB
+Axios
 
-Cloudinary
+JavaScript (ES Modules)
 
-JWT Authentication
-
-Mongoose ODM
-
-📌 Features
-
-User Signup & Login (JWT based)
-
-Create & Join Meetings
-
-Real-time signaling using Socket.IO
-
-WebRTC support for audio/video calls
-
-Socket rooms for meetings
-
-Cloudinary integration for profile images / uploads
-
-Secure API architecture
-
-Scalable folder structure
-
-📁 Project Folder Structure
-backend/
+📁 Project Structure
+frontend/
+│
+├── public/
+│   └── index.html
 │
 ├── src/
-│   ├── config/
-│   │   ├── db.js
-│   │   ├── cloudinary.js
-│   │   └── socket.js
-│   │
-│   ├── models/
-│   │   ├── user.model.js
-│   │   └── meeting.model.js
-│   │
-│   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   └── meeting.controller.js
-│   │
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
 │   ├── services/
-│   │   ├── auth.service.js
-│   │   └── meeting.service.js
-│   │
-│   ├── routes/
-│   │   ├── auth.routes.js
-│   │   └── meeting.routes.js
-│   │
-│   ├── socket/
-│   │   └── rtc.socket.js
-│   │
-│   ├── middlewares/
-│   │   ├── auth.middleware.js
-│   │   └── error.middleware.js
-│   │
+│   ├── hooks/
 │   ├── utils/
-│   │   └── generateMeetingId.js
 │   │
-│   ├── app.js
-│   └── server.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
 │
-├── .env
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
 ├── package.json
 └── README.md
 
-⚙️ Environment Variables
+⚙️ Prerequisites
 
-Create a .env file in the root directory:
+Make sure you have installed:
 
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+Node.js (v18 or later recommended)
 
-🛠️ Installation & Setup
-1️⃣ Clone Repository
+npm (comes with Node.js)
+
+Check versions:
+
+node -v
+npm -v
+
+🛠️ Installation & Setup (Step-by-Step)
+1️⃣ Clone the Repository
 git clone <repository-url>
-cd backend
+cd frontend
 
 2️⃣ Install Dependencies
 npm install
 
-3️⃣ Run in Development
-npx nodemon src/server.js
+🎨 Tailwind CSS Setup (Stable v3)
+3️⃣ Install Tailwind CSS
+npm install -D tailwindcss@3.4.17 postcss autoprefixer
 
-4️⃣ Run in Production
-node src/server.js
-
-🔁 WebRTC Signaling Flow
-Client A → Offer → Socket Server
-Socket Server → Offer → Client B
-
-Client B → Answer → Socket Server
-Socket Server → Answer → Client A
-
-ICE Candidates exchanged
-Media flows peer-to-peer (WebRTC)
+4️⃣ Initialize Tailwind
+npx tailwindcss init -p
 
 
-⚠️ Note:
-Server is used only for signaling, not for audio/video streaming.
+This creates:
 
-🔐 Security Best Practices
+tailwind.config.js
+postcss.config.js
 
-JWT-based authentication
+5️⃣ Configure tailwind.config.js
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
 
-Protected routes with middleware
+6️⃣ Configure postcss.config.js
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
 
-.env file excluded from version control
+7️⃣ Add Tailwind to CSS
 
-Role-based access (future scope)
+📄 src/index.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+8️⃣ Import CSS in main.jsx
+
+📄 src/main.jsx
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
+
+▶️ Run the Frontend
+Development Mode
+npm run dev
+
+
+Open in browser:
+
+http://localhost:5173
+
+🧪 Test Tailwind (Verification)
+
+📄 src/App.jsx
+
+function App() {
+  return (
+    <div className="h-screen bg-black flex items-center justify-center">
+      <h1 className="text-white text-5xl font-bold">
+        Frontend Ready 🚀
+      </h1>
+    </div>
+  )
+}
+
+export default App
+
+
+If you see:
+
+Black background
+
+Big white text
+
+👉 Tailwind is working correctly ✅
+
+🔌 Environment Variables (Optional)
+
+Create a .env file in frontend/:
+
+VITE_API_URL=http://localhost:5000/api
+VITE_SOCKET_URL=http://localhost:5000
+
+🔁 Frontend ↔ Backend Flow
+User Login → REST API (Axios)
+Create / Join Meeting → Backend
+Socket.IO → Real-time signaling
+WebRTC → Audio / Video (P2P)
 
 📈 Future Enhancements
 
-Group video meetings
+Login / Signup UI
 
-Screen sharing
+Meeting Room UI (Video Grid)
 
-Meeting recording
+Screen Sharing
 
-Chat during meetings
+In-meeting Chat
 
-Redis for socket scaling
-
-TURN/STUN server integration
-
-🤝 Contributing
-
-Contributions are welcome.
-Feel free to fork the repository and submit a pull request.
+Responsive Mobile UI
 
 📄 License
 
 This project is licensed under the MIT License.
 
-💡 Author
+👨‍💻 Author
 
 Anurag Srivastava
-Backend Developer | Node.js | Real-Time Applications
+Frontend Developer | React | Tailwind | Real-Time Apps
