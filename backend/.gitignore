@@ -1,0 +1,16 @@
+# env files
+.env
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build files
+dist/
+build/
+git add .
+git commit -m "Remove .env file from tracking"
