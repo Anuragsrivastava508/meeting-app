@@ -26,24 +26,10 @@ const meetingSchema = new mongoose.Schema(
       },
     ],
 
-    startTime: {
-      type: Date,
-      required: true,
-    },
-
-    endTime: {
-      type: Date,
-    },
-
     status: {
       type: String,
       enum: ["scheduled", "ongoing", "ended"],
       default: "scheduled",
-    },
-
-    isRecordingEnabled: {
-      type: Boolean,
-      default: false,
     },
   },
   { timestamps: true }

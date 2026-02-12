@@ -6,11 +6,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
+import meetingRoutes from "./routes/meeting.route.js";
 
 
 dotenv.config();
 const app = express();
-
 // 🔹 Middlewares
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
@@ -20,7 +21,9 @@ app.use(cors());
 // 🔹 Test route
 
 app.use("/api/auth", authRoutes);
-// 8
+app.use("/api/message", messageRoutes);
+app.use("/api/meeting", meetingRoutes);
+// 
 
 const PORT = process.env.PORT || 5001;
 
