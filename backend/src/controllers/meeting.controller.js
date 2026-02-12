@@ -1,5 +1,7 @@
 import Meeting from "../models/meeting.model.js";
 import { v4 as uuidv4 } from "uuid";
+import cloudinary from "../config/cloudinary.js";
+
 
 // 🔹 Create Meeting
 export const createMeeting = async (req, res) => {

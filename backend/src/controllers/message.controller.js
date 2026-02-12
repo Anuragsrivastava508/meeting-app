@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import Message from "../models/message.model.js";
 
-//import cloudinary from "../lib/cloudinary.js";
+import cloudinary from "../config/cloudinary.js";
 //import { getReceiverSocketIds, io } from "../lib/socket.js";
 
 /* ================= GET USERS ================= */
