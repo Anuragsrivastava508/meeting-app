@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
+import authRoutes from "./routes/auth.route.js";
+
 
 dotenv.config();
 const app = express();
@@ -16,9 +18,9 @@ app.use(cookieParser());
 app.use(cors());
 
 // 🔹 Test route
-app.get("/", (req, res) => {
-  res.send("Backend running 🚀");
-});
+
+app.use("/api/auth", authRoutes);
+// 8
 
 const PORT = process.env.PORT || 5001;
 
@@ -52,7 +54,6 @@ startServer();
 // // );
 
 // // 🔥 API Routes
-// app.use("/api/auth", authRoutes);
 // app.use("/api/messages", messageRoutes);
 
 // // ❌ REMOVE FRONTEND SERVE BLOCK
