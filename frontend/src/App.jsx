@@ -1,22 +1,28 @@
 
 import React from 'react'
 import Navbar from './components/Navbar';
-import Footer from './components/footer';
+import { Routes,Route } from 'react-router-dom';
+
+import HomePages from './pages/homePages';
+import SignupPages from './pages/SignupPages';
+import LoginPages from './pages/LoginPages';
+import SettingPages from './pages/SettingPages';
+import ProfilePages from './pages/ProfilePages';
 
 const App = () => {
   return (
-    <div>
+  <div>
     <Navbar/>
-  
-    <div className="h-screen bg-black flex items-center justify-center">
-      <h1 className="text-white text-5xl font-bold">
-        Frontend Ready 🚀
-      </h1>
-    </div>
+    <Routes>
+    <Route path='/' element={<HomePages/>}/>
+    <Route path='/Signup' element={<SignupPages/>}/>
+    <Route path='/Login' element={<LoginPages/>}/>
+    <Route path='/Settings' element={<SettingPages/>}/>
+    <Route path='/Profile' element={<ProfilePages/>}/>
 
-<Footer/>
-  
-      </div>
+    </Routes>
+    
+  </div>
   )
 }
 
