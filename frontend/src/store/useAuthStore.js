@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 export const useAuthStore = create((set,get) => ({
 authUser:null,
 isSigningUp:false,
-isLogingingIp:false,
+isLogingIn:false,
 isUpdatingProfile:false,
 isCheckingAuth:true,
 
@@ -21,6 +21,7 @@ checkAuth: async () => {
     set({ authUser: res.data });
     return true;
   } catch (error) {
+    //console.log("error in checkauth:",error)
     set({ authUser: null });
     return false;
   } finally {
@@ -42,8 +43,10 @@ signup:async (data) => {
     }
 },
 /* ================= login================= */
+
+
 login:async (data) => {
-    set({isLogingingIp:trur});
+    set({isLogingIn:true});
     try {
         const res = await axiosInstance.post("/auth/login",data);
         set({authUser:res.data });
@@ -52,7 +55,7 @@ login:async (data) => {
     } catch (error) {
          toast.error(error?.response?.data?.message ?? "Signup failed");
     } finally {
-      set({ isLogingingIp: false });
+      set({ isLogingIn: false });
 }
 },
 /* ================= logout================= */
