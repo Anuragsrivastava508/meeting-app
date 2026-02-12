@@ -9,7 +9,18 @@ import LoginPages from './pages/LoginPages';
 import SettingPages from './pages/SettingPages';
 import ProfilePages from './pages/ProfilePages';
 
+import { useAuthStore } from "./store/useAuthStore";
+import { useEffect } from 'react';
+
 const App = () => {
+const {authUser,checkAuth,isCheckingAuth} = useAuthStore();
+
+useEffect(()=>{
+  checkAuth();
+},[checkAuth] );
+
+console.log({authUser});
+
   return (
   <div>
     <Navbar/>
