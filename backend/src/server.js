@@ -45,28 +45,3 @@ const startServer = async () => {
 
 // 🔥 THIS WAS MISSING
 startServer();
-
-// app.use(cookieParser());
-
-// // 🔥 CORS (localhost + your Render frontend)
-// // app.use(
-// //   cors({
-// //     origin: [
-// //       "http://localhost:5173",
-// //       "https://chatifys.onrender.com"   // <-- your frontend URL
-// //     ],
-// //     credentials: true,
-// //   })
-// // );
-
-// // 🔥 API Routes
-// app.use("/api/messages", messageRoutes);
-
-// // ❌ REMOVE FRONTEND SERVE BLOCK
-// // Because frontend is deployed separately on Render Static Site
-// // This block was causing ENOENT errors for missing dist folder.
-
-// server.listen(PORT, () => {
-//   console.log("server is running on PORT:" + PORT);
-//   connectDB();
-// });
