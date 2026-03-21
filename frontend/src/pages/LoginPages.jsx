@@ -19,12 +19,27 @@ const LoginPage = () => {
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
 
   {/* LEFT SIDE */}
-  <div className="hidden md:flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white p-10">
-    <div>
-      <h1 className="text-4xl font-bold mb-4">Welcome 👋</h1>
-      <p className="text-lg opacity-80">
-        Join and start your meeting journey 🚀
+
+ {/* LEFT SIDE (INFO PANEL) */}
+  <div className="hidden md:flex items-center justify-center bg-primary text-primary-content p-10">
+    
+    <div className="max-w-md space-y-6">
+      
+      <h1 className="text-4xl font-bold">
+        Welcome back 👋
+      </h1>
+
+      <p className="opacity-80">
+        Log in to continue your meetings and stay connected.
       </p>
+
+      <ul className="space-y-3 mt-6">
+        <li className="flex gap-2">🎥 HD Video Meetings</li>
+        <li className="flex gap-2">💬 Real-time Chat</li>
+        <li className="flex gap-2">⚡ Instant Join Links</li>
+        <li className="flex gap-2">🔒 Secure Platform</li>
+      </ul>
+
     </div>
   </div>
 
@@ -117,10 +132,7 @@ const LoginPage = () => {
            </div>
         </div>
       </div>
-
-        
         </div>
- 
   );
 };
 export default LoginPage;

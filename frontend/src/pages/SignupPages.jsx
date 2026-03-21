@@ -38,14 +38,45 @@ const SignUpPage = () => {
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
 
   {/* LEFT SIDE */}
-  <div className="hidden md:flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white p-10">
-    <div>
-      <h1 className="text-4xl font-bold mb-4">Welcome 👋</h1>
-      <p className="text-lg opacity-80">
-        Join and start your meeting journey 🚀
-      </p>
+  {/* LEFT SIDE (INFO PANEL) */}
+<div className="hidden md:flex flex-col justify-center items-center 
+bg-gradient-to-br from-primary to-secondary text-white p-10">
+
+  <div className="max-w-md text-center space-y-6">
+
+    <h1 className="text-4xl font-bold">
+      Join us today 🚀
+    </h1>
+
+    <p className="text-lg opacity-80">
+      Create your account and start connecting instantly with your team.
+    </p>
+
+    {/* FEATURES */}
+    <div className="space-y-3 text-left mt-6">
+      <div className="flex items-center gap-3">
+        <span>🎥</span>
+        <p>Start meetings instantly</p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span>👥</span>
+        <p>Invite your team easily</p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span>💬</span>
+        <p>Chat while you meet</p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span>🔒</span>
+        <p>Secure & reliable platform</p>
+      </div>
     </div>
+
   </div>
+</div>
 
   {/* RIGHT SIDE (FORM) */}
   <div className="flex flex-col justify-center items-center p-3 sm:p-12">
