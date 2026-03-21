@@ -16,7 +16,7 @@ import { Routes,Route,Navigate } from 'react-router-dom';
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
-import HomePages from './pages/homePages';
+import HomePages from './pages/HomePages';
 import SignupPages from './pages/SignupPages';
 import LoginPages from './pages/LoginPages';
 import SettingPages from './pages/SettingPages';
