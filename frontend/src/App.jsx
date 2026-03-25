@@ -1,14 +1,4 @@
-// import React from 'react'
 
-// const App = () => {
-//   return (
-//     <div>
-//       <h1 className="text-5xl text-red-500">TAILWIND WORKING 🚀</h1>
-//     </div>
-//   )
-// }
-
-// export default App
 
 import React from 'react'
 import Navbar from './components/Navbar';
@@ -21,8 +11,9 @@ import SignupPages from './pages/SignupPages';
 import LoginPages from './pages/LoginPages';
 import SettingPages from './pages/SettingPages';
 import ProfilePages from './pages/ProfilePages';
-
+import MeetingScreen from "./pages/MeetingScreen";
 import { useAuthStore } from "./store/useAuthStore";
+
 import { useEffect } from 'react';
 
 const App = () => {
@@ -45,6 +36,11 @@ if (isCheckingAuth && !authUser) {
   <div>
     <Navbar/>
     <Routes>
+
+      <Route
+  path="/room/:id"
+  element={authUser ? <MeetingScreen /> : <Navigate to="/login" />}
+/>
        <Route
           path="/"
           element={authUser ? <HomePages /> : <Navigate to="/Login" />}

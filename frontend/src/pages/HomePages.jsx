@@ -85,3 +85,77 @@ const HomePages = () => {
 };
 
 export default HomePages;
+
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faLink,
+//   faVideo,
+//   faPlus,
+//   faCalendar,
+// } from "@fortawesome/free-solid-svg-icons";
+
+// const HomePages = () => {
+//   const navigate = useNavigate();   // ✅ important
+//   const [code, setCode] = useState("");
+
+//   const createMeeting = () => {
+//     const id = Math.random().toString(36).substring(2, 8);
+//     navigate(`/room/${id}`);
+//   };
+
+//   const joinMeeting = () => {
+//     if (!code) return;
+//     navigate(`/room/${code}`);
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+
+//       <div className="card w-full max-w-4xl bg-base-100 shadow-xl border border-base-300">
+//         <div className="card-body items-center text-center">
+
+//           <h1 className="text-4xl md:text-5xl font-semibold">
+//             Video calls and meetings for everyone
+//           </h1>
+
+//           <p className="text-base-content/70 mt-2 mb-8">
+//             Connect, collaborate and celebrate from anywhere
+//           </p>
+
+//           <div className="flex flex-col md:flex-row gap-4 w-full justify-center">
+
+//             {/* New Meeting */}
+//             <button onClick={createMeeting} className="btn btn-primary gap-2">
+//               <FontAwesomeIcon icon={faVideo} />
+//               New meeting
+//             </button>
+
+//             {/* Join */}
+//             <div className="flex w-full md:w-auto gap-2">
+
+//               <input
+//                 value={code}
+//                 onChange={(e) => setCode(e.target.value)}
+//                 placeholder="Enter a code"
+//                 className="input input-bordered w-full md:w-80"
+//               />
+
+//               <button onClick={joinMeeting} className="btn btn-outline btn-primary">
+//                 Join
+//               </button>
+
+//             </div>
+
+//           </div>
+
+//         </div>
+//       </div>
+
+//     </div>
+//   );
+// };
+
+// export default HomePages;
