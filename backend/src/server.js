@@ -1,4 +1,3 @@
-
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -6,44 +5,56 @@ import cors from "cors";
 import http from "http";
 import { initSocket } from "./config/socket.js"; 
 import { connectDB } from "./config/db.js";
+
+// routes
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import meetingRoutes from "./routes/meeting.route.js";
 
-
 dotenv.config();
+
 const app = express();
-// 🔹 Middlewares
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ limit: "10mb", extended: true }));
+
+/* ================= MIDDLEWARE ================= */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 app.use(cors({
-  origin: "http://localhost:5173",  
-  credentials: true,              
+  origin: "http://localhost:5173",
+  credentials: true,
 }));
 
-
-// 🔹 Test route
+/* ================= ROUTES ================= */
+app.get("/", (req, res) => {
+  res.send("Backend running ✅");
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/meeting", meetingRoutes);
 
-const PORT = process.env.PORT || 5001;
+/* ================= SERVER ================= */
+const PORT = process.env.PORT || 5000;
 
-const server = http.createServer(app);   
-initSocket(server);                      
+const server = http.createServer(app);
 
+/* ================= SOCKET ================= */
+initSocket(server);
+console.log("✅ Socket initialized");
+
+/* ================= START ================= */
 const startServer = async () => {
   try {
     await connectDB();
+    console.log("✅ DB Connected");
 
-    server.listen(PORT, () => {          
-      console.log(`🚀 Server running on PORT: ${PORT}`);
+    server.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
 
   } catch (error) {
-    console.error("Failed to start server", error);
+    console.error("❌ Server error:", error);
   }
 };
 

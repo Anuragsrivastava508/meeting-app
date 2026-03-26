@@ -41,10 +41,7 @@ if (isCheckingAuth && !authUser) {
   path="/room/:id"
   element={authUser ? <MeetingScreen /> : <Navigate to="/login" />}
 />
-       <Route
-          path="/"
-          element={authUser ? <HomePages /> : <Navigate to="/Login" />}
-        />
+    
    
         <Route
           path="/"

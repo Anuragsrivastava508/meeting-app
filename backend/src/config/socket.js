@@ -1,65 +1,87 @@
-import { Server } from "socket.io";
 
-let io;
 
-/* ================= USER → SOCKET MAP ================= */
-const userSocketMap = {};
 
-export const getReceiverSocketIds = (userId) => {
-  return userSocketMap[userId];
-};
+// import { Server } from "socket.io";
+// import cookie from "cookie";
+// import jwt from "jsonwebtoken";
 
-export const initSocket = (server) => {
-  io = new Server(server, {
-    cors: {
-      origin: "http://localhost:5173",
-      credentials: true,
-    },
-  });
+// let io;
 
-  io.on("connection", (socket) => {
-    console.log("🔥 Socket connected:", socket.id);
+// export const initSocket = (server) => {
+//   io = new Server(server, {
+//     cors: {
+//       origin: "http://localhost:5173",
+//       credentials: true,
+//     },
+//   });
 
-    const userId = socket.handshake.query.userId;
+//   io.on("connection", (socket) => {
+//     /* ================= AUTH ================= */
+//     try {
+//       const cookies = cookie.parse(socket.handshake.headers.cookie || "");
+//       const token = cookies.jwt;
 
-    /* ================= STORE USER SOCKET ================= */
-    if (userId) {
-      if (!userSocketMap[userId]) {
-        userSocketMap[userId] = new Set();
-      }
-      userSocketMap[userId].add(socket.id);
-    }
+//       if (!token) throw new Error("No token");
 
-    /* ================= DISCONNECT ================= */
-    socket.on("disconnect", () => {
-      if (userId && userSocketMap[userId]) {
-        userSocketMap[userId].delete(socket.id);
+//       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (userSocketMap[userId].size === 0) {
-          delete userSocketMap[userId];
-        }
-      }
-    });
+//       socket.userId = decoded.userId;
 
-    /* ================= MEETING ROOM ================= */
-    socket.on("join-room", ({ roomId }) => {
-      socket.join(roomId);
-      socket.to(roomId).emit("user-joined", socket.id);
-    });
+//       console.log("✅ Socket user:", socket.userId);
 
-    /* ================= WEBRTC ================= */
-    socket.on("webrtc-offer", ({ roomId, offer }) => {
-      socket.to(roomId).emit("webrtc-offer", offer);
-    });
+//     } catch (err) {
+//       console.log("❌ Unauthorized socket");
+//       return socket.disconnect();
+//     }
 
-    socket.on("webrtc-answer", ({ roomId, answer }) => {
-      socket.to(roomId).emit("webrtc-answer", answer);
-    });
+//     console.log("🔥 Connected:", socket.id);
 
-    socket.on("webrtc-ice", ({ roomId, candidate }) => {
-      socket.to(roomId).emit("webrtc-ice", candidate);
-    });
-  });
-};
+//     /* ================= JOIN ROOM ================= */
+//     socket.on("join-room", ({ roomId }) => {
+//       socket.join(roomId);
 
-export { io };
+//       const users = Array.from(
+//         io.sockets.adapter.rooms.get(roomId) || []
+//       );
+
+//       socket.emit("all-users", users);
+
+//       socket.to(roomId).emit("user-joined", {
+//         userId: socket.userId,
+//         socketId: socket.id,
+//       });
+
+//       console.log(`User ${socket.userId} joined room ${roomId}`);
+//     });
+
+//     /* ================= WEBRTC ================= */
+//     socket.on("webrtc-offer", ({ to, offer }) => {
+//       io.to(to).emit("webrtc-offer", {
+//         from: socket.id,
+//         offer,
+//       });
+//     });
+
+//     socket.on("webrtc-answer", ({ to, answer }) => {
+//       io.to(to).emit("webrtc-answer", {
+//         from: socket.id,
+//         answer,
+//       });
+//     });
+
+//     socket.on("webrtc-ice", ({ to, candidate }) => {
+//       io.to(to).emit("webrtc-ice", {
+//         from: socket.id,
+//         candidate,
+//       });
+//     });
+
+//     /* ================= DISCONNECT ================= */
+//     socket.on("disconnect", () => {
+//       console.log("❌ Disconnected:", socket.id);
+//       socket.broadcast.emit("user-disconnected", socket.id);
+//     });
+//   });
+// };
+
+// export { io };
