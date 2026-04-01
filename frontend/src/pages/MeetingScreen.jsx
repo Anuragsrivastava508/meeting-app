@@ -1,305 +1,305 @@
-// import { useEffect, useRef, useState } from "react";
-// import { io } from "socket.io-client";
-// import { Device } from "mediasoup-client";
-// import { useParams, useNavigate } from "react-router-dom";
-// import { axiosInstance } from "../lib/axios";
-
-// export default function MeetingScreen() {
-//   const { id } = useParams();
-//   const navigate = useNavigate();
-
-//   const socketRef = useRef(null);
-//   const deviceRef = useRef(null);
-//   const sendTransportRef = useRef(null);
-
-//   const localVideo = useRef(null);
-//   const localStreamRef = useRef(null);
+import { useEffect, useRef, useState } from "react";
+import { io } from "socket.io-client";
+import { Device } from "mediasoup-client";
+import { useParams, useNavigate } from "react-router-dom";
+import { axiosInstance } from "../lib/axios";
+
+export default function MeetingScreen() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const socketRef = useRef(null);
+  const deviceRef = useRef(null);
+  const sendTransportRef = useRef(null);
+
+  const localVideo = useRef(null);
+  const localStreamRef = useRef(null);
 
-//   const consumersRef = useRef({});
-//   const [remoteStreams, setRemoteStreams] = useState([]);
-
-//   /* CHAT */
-//   const [messages, setMessages] = useState([]);
-//   const [input, setInput] = useState("");
-//   const [showChat, setShowChat] = useState(true);
-
-//   /* FEATURES */
-//   const [isMuted, setIsMuted] = useState(false);
-//   const [isCameraOff, setIsCameraOff] = useState(false);
-//   const [participants, setParticipants] = useState([]);
-
-//   const socketBaseUrl =
-//     axiosInstance.defaults.baseURL.replace(/\/api$/, "");
-
-//   useEffect(() => {
-//     const start = async () => {
-//      const socket = io(socketBaseUrl, {
-//     withCredentials: true,
-//     transports: ["websocket"],
-//     reconnection: true,
-//         });
-
-//       socketRef.current = socket;
-
-//       /* LOCAL STREAM */
-//       const stream = await navigator.mediaDevices.getUserMedia({
-//         video: true,
-//         audio: true,
-//       });
-
-//       localStreamRef.current = stream;
-//       localVideo.current.srcObject = stream;
-
-//       socket.on("connect", () => {
-//         socket.emit("join-room", { roomId: id });
-
-//         refreshParticipants();
-
-//         socket.emit("get-rtp-capabilities", async (rtpCapabilities) => {
-//           const device = new Device();
-//           await device.load({ routerRtpCapabilities: rtpCapabilities });
-
-//           deviceRef.current = device;
-
-//           createSendTransport(stream);
-//         });
-//       });
-
-//       socket.on("user-joined", refreshParticipants);
-//       socket.on("user-left", refreshParticipants);
-
-//       socket.on("new-producer", ({ producerId }) => {
-//         if (!consumersRef.current[producerId]) {
-//           consumeStream(producerId);
-//         }
-//       });
-
-//       socket.on("receive-message", (msg) => {
-//         setMessages((prev) => [...prev, msg]);
-//       });
-//     };
-
-//     start();
-
-//     /* 🔥 CLEANUP */
-//     return () => {
-//       socketRef.current?.disconnect();
-
-//       Object.values(consumersRef.current).forEach((c) => c.close());
-
-//       localStreamRef.current?.getTracks().forEach((t) => t.stop());
-
-//       setRemoteStreams([]);
-//     };
-//   }, [id]);
-
-//   const refreshParticipants = () => {
-//     socketRef.current?.emit("get-participants", id, (users) => {
-//       setParticipants(users);
-//     });
-//   };
-
-//   /* SEND TRANSPORT */
-//   const createSendTransport = (stream) => {
-//     const socket = socketRef.current;
-//     const device = deviceRef.current;
-
-//     socket.emit("create-transport", {}, async (params) => {
-//       const transport = device.createSendTransport(params);
-//       sendTransportRef.current = transport;
-
-//       transport.on("connect", ({ dtlsParameters }, callback) => {
-//         socket.emit("connect-transport", { dtlsParameters });
-//         callback();
-//       });
-
-//       transport.on("produce", ({ kind, rtpParameters }, callback) => {
-//         socket.emit("produce", { kind, rtpParameters }, ({ id }) =>
-//           callback({ id })
-//         );
-//       });
-
-//       await transport.produce({ track: stream.getVideoTracks()[0] });
-//       await transport.produce({ track: stream.getAudioTracks()[0] });
-//     });
-//   };
-
-//   /* CONSUME */
-//   const consumeStream = (producerId) => {
-//     const socket = socketRef.current;
-//     const device = deviceRef.current;
-
-//     socket.emit("create-transport", {}, async (params) => {
-//       const recvTransport = device.createRecvTransport(params);
-
-//       recvTransport.on("connect", ({ dtlsParameters }, callback) => {
-//         socket.emit("connect-transport", { dtlsParameters });
-//         callback();
-//       });
-
-//       socket.emit(
-//         "consume",
-//         {
-//           producerId,
-//           rtpCapabilities: device.rtpCapabilities,
-//         },
-//         async ({ id, kind, rtpParameters }) => {
-//           const consumer = await recvTransport.consume({
-//             id,
-//             producerId,
-//             kind,
-//             rtpParameters,
-//           });
-
-//           consumersRef.current[producerId] = consumer;
-
-//           const stream = new MediaStream();
-//           stream.addTrack(consumer.track);
-
-//           setRemoteStreams((prev) => {
-//             if (prev.find((s) => s.id === stream.id)) return prev;
-//             return [...prev, stream];
-//           });
-//         }
-//       );
-//     });
-//   };
-
-//   /* 🎥 SCREEN SHARE */
-//   const startScreenShare = async () => {
-//     const screen = await navigator.mediaDevices.getDisplayMedia({
-//       video: true,
-//     });
-
-//     const screenTrack = screen.getVideoTracks()[0];
-
-//     localVideo.current.srcObject = new MediaStream([screenTrack]);
-
-//     const sender = sendTransportRef.current
-//       ?.getSenders()
-//       ?.find((s) => s.track.kind === "video");
-
-//     if (sender) sender.replaceTrack(screenTrack);
-
-//     screenTrack.onended = stopScreenShare;
-//   };
-
-//   const stopScreenShare = () => {
-//     const originalStream = localStreamRef.current;
-
-//     localVideo.current.srcObject = originalStream;
-
-//     const videoTrack = originalStream.getVideoTracks()[0];
-
-//     const sender = sendTransportRef.current
-//       ?.getSenders()
-//       ?.find((s) => s.track.kind === "video");
-
-//     if (sender) sender.replaceTrack(videoTrack);
-//   };
-
-//   /* 🔇 MUTE */
-//   const toggleMute = () => {
-//     const track = localStreamRef.current.getAudioTracks()[0];
-//     track.enabled = !track.enabled;
-//     setIsMuted(!track.enabled);
-//   };
-
-//   /* 📷 CAMERA */
-//   const toggleCamera = () => {
-//     const track = localStreamRef.current.getVideoTracks()[0];
-//     track.enabled = !track.enabled;
-//     setIsCameraOff(!track.enabled);
-//   };
-
-//   /* CHAT */
-//   const sendMessage = () => {
-//     if (!input.trim()) return;
-
-//     const msg = { message: input, user: "You" };
-//     setMessages((prev) => [...prev, msg]);
-
-//     socketRef.current.emit("send-message", {
-//       roomId: id,
-//       message: input,
-//       user: "User",
-//     });
-
-//     setInput("");
-//   };
-
-//   return (
-//     <div className="h-screen bg-[#202124] flex">
-
-//       {/* VIDEO */}
-//       <div className="flex-1 flex flex-col">
-
-//         <div className="flex justify-between px-6 py-3 text-white">
-//           <h2>Room: {id}</h2>
-//           <button onClick={() => setShowChat(!showChat)}>💬</button>
-//         </div>
-
-//         <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-//           <video ref={localVideo} autoPlay muted className="rounded-xl" />
-
-//           {remoteStreams.map((stream, i) => (
-//             <video
-//               key={i}
-//               autoPlay
-//               ref={(v) => v && (v.srcObject = stream)}
-//               className="rounded-xl"
-//             />
-//           ))}
-//         </div>
-
-//         {/* CONTROLS */}
-//         <div className="flex justify-center gap-6 py-4">
-//           <button onClick={toggleMute}>
-//             {isMuted ? "🔇" : "🎤"}
-//           </button>
-
-//           <button onClick={toggleCamera}>
-//             {isCameraOff ? "🚫📷" : "📷"}
-//           </button>
-
-//           <button onClick={startScreenShare}>🖥️</button>
-
-//           <button onClick={() => navigate("/")}>📞</button>
-//         </div>
-//       </div>
-
-//       {/* CHAT + PARTICIPANTS */}
-//       {showChat && (
-//         <div className="w-80 bg-[#2a2b2e] text-white flex flex-col">
-
-//           <div className="p-3 border-b">Chat</div>
-
-//           <div className="flex-1 overflow-y-auto p-3">
-//             {messages.map((m, i) => (
-//               <div key={i}>{m.message}</div>
-//             ))}
-//           </div>
-
-//           <div className="p-2 flex">
-//             <input
-//               value={input}
-//               onChange={(e) => setInput(e.target.value)}
-//               className="flex-1"
-//             />
-//             <button onClick={sendMessage}>Send</button>
-//           </div>
-
-//           <div className="p-3 border-t">
-//             <h3>Participants ({participants.length})</h3>
-//             {participants.map((p, i) => (
-//               <div key={i}>User {p.slice(0, 5)}</div>
-//             ))}
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
+  const consumersRef = useRef({});
+  const [remoteStreams, setRemoteStreams] = useState([]);
+
+  /* CHAT */
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [showChat, setShowChat] = useState(true);
+
+  /* FEATURES */
+  const [isMuted, setIsMuted] = useState(false);
+  const [isCameraOff, setIsCameraOff] = useState(false);
+  const [participants, setParticipants] = useState([]);
+
+  const socketBaseUrl =
+    axiosInstance.defaults.baseURL.replace(/\/api$/, "");
+
+  useEffect(() => {
+    const start = async () => {
+     const socket = io(socketBaseUrl, {
+    withCredentials: true,
+    transports: ["websocket"],
+    reconnection: true,
+        });
+
+      socketRef.current = socket;
+
+      /* LOCAL STREAM */
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
+
+      localStreamRef.current = stream;
+      localVideo.current.srcObject = stream;
+
+      socket.on("connect", () => {
+        socket.emit("join-room", { roomId: id });
+
+        refreshParticipants();
+
+        socket.emit("get-rtp-capabilities", async (rtpCapabilities) => {
+          const device = new Device();
+          await device.load({ routerRtpCapabilities: rtpCapabilities });
+
+          deviceRef.current = device;
+
+          createSendTransport(stream);
+        });
+      });
+
+      socket.on("user-joined", refreshParticipants);
+      socket.on("user-left", refreshParticipants);
+
+      socket.on("new-producer", ({ producerId }) => {
+        if (!consumersRef.current[producerId]) {
+          consumeStream(producerId);
+        }
+      });
+
+      socket.on("receive-message", (msg) => {
+        setMessages((prev) => [...prev, msg]);
+      });
+    };
+
+    start();
+
+    /* 🔥 CLEANUP */
+    return () => {
+      socketRef.current?.disconnect();
+
+      Object.values(consumersRef.current).forEach((c) => c.close());
+
+      localStreamRef.current?.getTracks().forEach((t) => t.stop());
+
+      setRemoteStreams([]);
+    };
+  }, [id]);
+
+  const refreshParticipants = () => {
+    socketRef.current?.emit("get-participants", id, (users) => {
+      setParticipants(users);
+    });
+  };
+
+  /* SEND TRANSPORT */
+  const createSendTransport = (stream) => {
+    const socket = socketRef.current;
+    const device = deviceRef.current;
+
+    socket.emit("create-transport", {}, async (params) => {
+      const transport = device.createSendTransport(params);
+      sendTransportRef.current = transport;
+
+      transport.on("connect", ({ dtlsParameters }, callback) => {
+        socket.emit("connect-transport", { dtlsParameters });
+        callback();
+      });
+
+      transport.on("produce", ({ kind, rtpParameters }, callback) => {
+        socket.emit("produce", { kind, rtpParameters }, ({ id }) =>
+          callback({ id })
+        );
+      });
+
+      await transport.produce({ track: stream.getVideoTracks()[0] });
+      await transport.produce({ track: stream.getAudioTracks()[0] });
+    });
+  };
+
+  /* CONSUME */
+  const consumeStream = (producerId) => {
+    const socket = socketRef.current;
+    const device = deviceRef.current;
+
+    socket.emit("create-transport", {}, async (params) => {
+      const recvTransport = device.createRecvTransport(params);
+
+      recvTransport.on("connect", ({ dtlsParameters }, callback) => {
+        socket.emit("connect-transport", { dtlsParameters });
+        callback();
+      });
+
+      socket.emit(
+        "consume",
+        {
+          producerId,
+          rtpCapabilities: device.rtpCapabilities,
+        },
+        async ({ id, kind, rtpParameters }) => {
+          const consumer = await recvTransport.consume({
+            id,
+            producerId,
+            kind,
+            rtpParameters,
+          });
+
+          consumersRef.current[producerId] = consumer;
+
+          const stream = new MediaStream();
+          stream.addTrack(consumer.track);
+
+          setRemoteStreams((prev) => {
+            if (prev.find((s) => s.id === stream.id)) return prev;
+            return [...prev, stream];
+          });
+        }
+      );
+    });
+  };
+
+  /* 🎥 SCREEN SHARE */
+  const startScreenShare = async () => {
+    const screen = await navigator.mediaDevices.getDisplayMedia({
+      video: true,
+    });
+
+    const screenTrack = screen.getVideoTracks()[0];
+
+    localVideo.current.srcObject = new MediaStream([screenTrack]);
+
+    const sender = sendTransportRef.current
+      ?.getSenders()
+      ?.find((s) => s.track.kind === "video");
+
+    if (sender) sender.replaceTrack(screenTrack);
+
+    screenTrack.onended = stopScreenShare;
+  };
+
+  const stopScreenShare = () => {
+    const originalStream = localStreamRef.current;
+
+    localVideo.current.srcObject = originalStream;
+
+    const videoTrack = originalStream.getVideoTracks()[0];
+
+    const sender = sendTransportRef.current
+      ?.getSenders()
+      ?.find((s) => s.track.kind === "video");
+
+    if (sender) sender.replaceTrack(videoTrack);
+  };
+
+  /* 🔇 MUTE */
+  const toggleMute = () => {
+    const track = localStreamRef.current.getAudioTracks()[0];
+    track.enabled = !track.enabled;
+    setIsMuted(!track.enabled);
+  };
+
+  /* 📷 CAMERA */
+  const toggleCamera = () => {
+    const track = localStreamRef.current.getVideoTracks()[0];
+    track.enabled = !track.enabled;
+    setIsCameraOff(!track.enabled);
+  };
+
+  /* CHAT */
+  const sendMessage = () => {
+    if (!input.trim()) return;
+
+    const msg = { message: input, user: "You" };
+    setMessages((prev) => [...prev, msg]);
+
+    socketRef.current.emit("send-message", {
+      roomId: id,
+      message: input,
+      user: "User",
+    });
+
+    setInput("");
+  };
+
+  return (
+    <div className="h-screen bg-[#202124] flex">
+
+      {/* VIDEO */}
+      <div className="flex-1 flex flex-col">
+
+        <div className="flex justify-between px-6 py-3 text-white">
+          <h2>Room: {id}</h2>
+          <button onClick={() => setShowChat(!showChat)}>💬</button>
+        </div>
+
+        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+          <video ref={localVideo} autoPlay muted className="rounded-xl" />
+
+          {remoteStreams.map((stream, i) => (
+            <video
+              key={i}
+              autoPlay
+              ref={(v) => v && (v.srcObject = stream)}
+              className="rounded-xl"
+            />
+          ))}
+        </div>
+
+        {/* CONTROLS */}
+        <div className="flex justify-center gap-6 py-4">
+          <button onClick={toggleMute}>
+            {isMuted ? "🔇" : "🎤"}
+          </button>
+
+          <button onClick={toggleCamera}>
+            {isCameraOff ? "🚫📷" : "📷"}
+          </button>
+
+          <button onClick={startScreenShare}>🖥️</button>
+
+          <button onClick={() => navigate("/")}>📞</button>
+        </div>
+      </div>
+
+      {/* CHAT + PARTICIPANTS */}
+      {showChat && (
+        <div className="w-80 bg-[#2a2b2e] text-white flex flex-col">
+
+          <div className="p-3 border-b">Chat</div>
+
+          <div className="flex-1 overflow-y-auto p-3">
+            {messages.map((m, i) => (
+              <div key={i}>{m.message}</div>
+            ))}
+          </div>
+
+          <div className="p-2 flex">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="flex-1"
+            />
+            <button onClick={sendMessage}>Send</button>
+          </div>
+
+          <div className="p-3 border-t">
+            <h3>Participants ({participants.length})</h3>
+            {participants.map((p, i) => (
+              <div key={i}>User {p.slice(0, 5)}</div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 
 // import { useEffect, useRef, useState } from "react";
