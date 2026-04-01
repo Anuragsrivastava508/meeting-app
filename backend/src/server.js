@@ -11,6 +11,10 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import meetingRoutes from "./routes/meeting.route.js";
 
+import { createMediasoupWorker, createRouter } from "./config/mediasoup.js";
+
+
+
 dotenv.config();
 
 const app = express();
@@ -49,6 +53,11 @@ const startServer = async () => {
     await connectDB();
     console.log("✅ DB Connected");
 
+    // ✅ ADD HERE (correct place)
+    await createMediasoupWorker();
+    await createRouter();
+    console.log("🔥 Mediasoup initialized");
+
     server.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
@@ -57,5 +66,6 @@ const startServer = async () => {
     console.error("❌ Server error:", error);
   }
 };
+
 
 startServer();

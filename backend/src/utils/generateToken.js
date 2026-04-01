@@ -7,11 +7,11 @@ export const generateToken = (userId, res) => {
   });
 
 
- res.cookie("jwt", token, {
+res.cookie("jwt", token, {
   httpOnly: true,
   secure: false,
   sameSite: "lax",
-  maxAge: 7 * 24 * 60 * 60 * 1000,
+  path: "/", // 👈 MUST ADD
 });
 
 };

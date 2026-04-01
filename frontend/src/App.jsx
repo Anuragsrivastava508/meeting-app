@@ -3,6 +3,7 @@
 import React from 'react'
 import Navbar from './components/Navbar';
 import { Routes,Route,Navigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
@@ -18,6 +19,8 @@ import { useEffect } from 'react';
 
 const App = () => {
 const {authUser,checkAuth,isCheckingAuth} = useAuthStore();
+const location = useLocation();
+const isMeetingRoute = location.pathname.startsWith("/room/");
 
 useEffect(()=>{
   checkAuth();
@@ -34,7 +37,7 @@ if (isCheckingAuth && !authUser) {
 
   return (
   <div>
-    <Navbar/>
+    {!isMeetingRoute && <Navbar/>}
     <Routes>
 
       <Route
