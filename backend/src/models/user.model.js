@@ -1,4 +1,48 @@
 
+// import mongoose from "mongoose";
+
+// const userSchema = new mongoose.Schema(
+//   {
+//     fullName: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
+
+//     email: {
+//       type: String,
+//       required: true,
+//       unique: true,
+//       lowercase: true,
+//     },
+
+//     password: {
+//       type: String,
+//       required: true,
+//       minlength: 6,
+//     },
+
+//     avatar: {
+//       type: String, // profile image URL
+//       default: "",
+//     },
+
+//     role: {
+//       type: String,
+//       enum: ["host", "participant"],
+//       default: "participant",
+//     },
+
+//     isVerified: {
+//       type: Boolean,
+//       default: false,
+//     },
+//   },
+//   { timestamps: true }
+// );
+
+// export default mongoose.model("User", userSchema);
+
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -22,8 +66,8 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
-    avatar: {
-      type: String, // profile image URL
+    profilePic: {         // ✅ avatar → profilePic (auth controller se match)
+      type: String,
       default: "",
     },
 
