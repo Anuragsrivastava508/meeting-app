@@ -121,7 +121,12 @@ const S = {
       alignItems: "center",
       justifyContent: "center" 
         },
-  brandName: { fontSize: 24, fontWeight: 700, color: "#fff" },
+  brandName:
+   { 
+    fontSize: 24,
+     fontWeight: 700,
+      color: "#fff" 
+    },
   heading: { fontSize: 36, fontWeight: 700, lineHeight: 1.2, marginBottom: 16, margin: "0 0 16px" },
   sub: { fontSize: 16, opacity: 0.8, lineHeight: 1.6, margin: "0 0 36px" },
   features: { display: "flex", flexDirection: "column", gap: 16 },
