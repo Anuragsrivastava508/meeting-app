@@ -116,10 +116,10 @@ const S = {
      width: 48,
       height: 48,
       borderRadius: 12,
-       background: "rgba(255,255,255,0.2)",
-        display: "flex",
-         alignItems: "center",
-          justifyContent: "center" 
+      background: "rgba(255,255,255,0.2)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center" 
         },
   brandName: { fontSize: 24, fontWeight: 700, color: "#fff" },
   heading: { fontSize: 36, fontWeight: 700, lineHeight: 1.2, marginBottom: 16, margin: "0 0 16px" },
