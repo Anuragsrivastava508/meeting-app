@@ -85,9 +85,25 @@ const LoginPages = () => {
 };
 
 const S = {
-  root: { display: "flex", minHeight: "100vh", fontFamily: "'Segoe UI',system-ui,sans-serif" },
-  left: { flex: 1, background: "linear-gradient(135deg,#3730a3,#534AB7,#7c3aed)", display: "flex", alignItems: "center", justifyContent: "center", padding: 48 },
-  leftInner: { maxWidth: 400, color: "#fff" },
+  root: { 
+    display: "flex",
+     minHeight: "100vh",
+      fontFamily: "'Segoe UI',system-ui,sans-serif" 
+    },
+  left: 
+  {
+     flex: 1,
+      background: "linear-gradient(135deg,#3730a3,#534AB7,#7c3aed)",
+       display: "flex", 
+       alignItems: "center",
+        justifyContent: "center",
+         padding: 48 
+        },
+  leftInner: 
+  {
+     maxWidth: 400,
+     color: "#fff" 
+    },
   brand: { display: "flex", alignItems: "center", gap: 12, marginBottom: 48 },
   brandIcon: { width: 48, height: 48, borderRadius: 12, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center" },
   brandName: { fontSize: 24, fontWeight: 700, color: "#fff" },
