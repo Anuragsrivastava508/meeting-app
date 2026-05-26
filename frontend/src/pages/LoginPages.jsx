@@ -7,12 +7,10 @@ const LoginPages = () => {
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const { login, isLogingIn } = useAuthStore();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     login(form);
   };
-
   return (
     <div style={S.root}>
       {/* LEFT */}
