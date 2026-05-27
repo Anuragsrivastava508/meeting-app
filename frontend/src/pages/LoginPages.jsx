@@ -175,7 +175,15 @@ const S = {
   inputWrap: { position: "relative", display: "flex", alignItems: "center" },
   inputIcon: { position: "absolute", left: 14, pointerEvents: "none" },
   input: { width: "100%", padding: "12px 14px 12px 40px", borderRadius: 12, border: "1.5px solid #e5e7eb", fontSize: 14, outline: "none", boxSizing: "border-box", transition: "border-color 0.2s", background: "#f9fafb" },
-  eyeBtn: { position: "absolute", right: 12, background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center" },
+  eyeBtn: 
+  { position: "absolute",
+     right: 12,
+      background: "none",
+       border: "none",
+        cursor: "pointer",
+         display: "flex",
+          alignItems: "center"
+         },
   submitBtn:
    { width: "100%",
      padding: "13px",
