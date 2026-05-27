@@ -188,10 +188,17 @@ const S = {
           cursor: "pointer",
            display: "flex", 
           alignItems: "center",
-           justifyContent:
-     "center", gap: 8, marginTop: 4 },
+           justifyContent:"center",
+          gap: 8,
+       marginTop: 4 },
   footer:
-   { textAlign: "center", fontSize: 14, color: "#888", marginTop: 24, marginBottom: 0 },
+   { textAlign:
+     "center",
+      fontSize: 14,
+       color: "#888", 
+       marginTop: 24,
+        marginBottom: 0 
+      },
   link:
    { color: "#534AB7", fontWeight: 600, textDecoration: "none" },
 };
