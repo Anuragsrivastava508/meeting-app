@@ -127,8 +127,21 @@ const S = {
      fontWeight: 700,
       color: "#fff" 
     },
-  heading: { fontSize: 36, fontWeight: 700, lineHeight: 1.2, marginBottom: 16, margin: "0 0 16px" },
-  sub: { fontSize: 16, opacity: 0.8, lineHeight: 1.6, margin: "0 0 36px" },
+  heading: 
+  { 
+  fontSize: 36,
+   fontWeight: 700,
+    lineHeight: 1.2,
+     marginBottom: 16, 
+     margin: "0 0 16px"
+     },
+  sub: 
+  {
+     fontSize: 16,
+      opacity: 0.8, 
+      lineHeight: 1.6,
+       margin: "0 0 36px" 
+      },
   features: { display: "flex", flexDirection: "column", gap: 16 },
   feature: { display: "flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.1)", borderRadius: 12, padding: "12px 16px" },
   fIcon: { fontSize: 20 },
