@@ -158,7 +158,10 @@ const S = {
        borderRadius: 12,
         padding: "12px 16px"
        },
-  fIcon: { fontSize: 20 },
+  fIcon:
+   {
+     fontSize: 20 
+    },
   fLabel: { fontSize: 15, fontWeight: 500 },
   right: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
   card: { width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: 40, boxShadow: "0 8px 40px rgba(83,74,183,0.12)" },
@@ -173,9 +176,24 @@ const S = {
   inputIcon: { position: "absolute", left: 14, pointerEvents: "none" },
   input: { width: "100%", padding: "12px 14px 12px 40px", borderRadius: 12, border: "1.5px solid #e5e7eb", fontSize: 14, outline: "none", boxSizing: "border-box", transition: "border-color 0.2s", background: "#f9fafb" },
   eyeBtn: { position: "absolute", right: 12, background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center" },
-  submitBtn: { width: "100%", padding: "13px", borderRadius: 12, background: "linear-gradient(135deg,#534AB7,#7c3aed)", color: "#fff", fontSize: 15, fontWeight: 600, border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 4 },
-  footer: { textAlign: "center", fontSize: 14, color: "#888", marginTop: 24, marginBottom: 0 },
-  link: { color: "#534AB7", fontWeight: 600, textDecoration: "none" },
+  submitBtn:
+   { width: "100%",
+     padding: "13px",
+      borderRadius: 12, 
+      background: "linear-gradient(135deg,#534AB7,#7c3aed)", 
+      color: "#fff",
+       fontSize: 15,
+        fontWeight: 600,
+         border: "none",
+          cursor: "pointer",
+           display: "flex", 
+          alignItems: "center",
+           justifyContent:
+     "center", gap: 8, marginTop: 4 },
+  footer:
+   { textAlign: "center", fontSize: 14, color: "#888", marginTop: 24, marginBottom: 0 },
+  link:
+   { color: "#534AB7", fontWeight: 600, textDecoration: "none" },
 };
 
 export default LoginPages;
