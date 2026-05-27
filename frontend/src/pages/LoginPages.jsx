@@ -142,8 +142,22 @@ const S = {
       lineHeight: 1.6,
        margin: "0 0 36px" 
       },
-  features: { display: "flex", flexDirection: "column", gap: 16 },
-  feature: { display: "flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.1)", borderRadius: 12, padding: "12px 16px" },
+  features:
+   {
+     display: "flex",
+     flexDirection: "column",
+     gap: 16 
+
+  },
+  feature: 
+  {
+     display: "flex",
+      alignItems: "center",
+       gap: 14, 
+       background: "rgba(255,255,255,0.1)", 
+       borderRadius: 12,
+        padding: "12px 16px"
+       },
   fIcon: { fontSize: 20 },
   fLabel: { fontSize: 15, fontWeight: 500 },
   right: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
