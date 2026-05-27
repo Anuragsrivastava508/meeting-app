@@ -190,33 +190,53 @@ export const initSocket = (server) => {
     });
 
     /* CONSUME */
-    socket.on("consume", async ({ rtpCapabilities, producerId }, cb) => {
-      try {
-        const router = getRouter();
-        const transportId = socketToRecvId[socket.id];
-        const transport = recvTransports[transportId];
+  socket.on("consume", async ({ rtpCapabilities, producerId }, cb) => {
+  try {
+    const router = getRouter();
 
-        if (!transport) {
-          console.log("❌ No recv transport for", socket.id);
-          return cb({});
-        }
-        if (!router.canConsume({ producerId, rtpCapabilities })) {
-          console.log("❌ Cannot consume", producerId);
-          return cb({});
-        }
+    const transportId = socketToRecvId[socket.id];
+    const transport = recvTransports[transportId];
 
-        const consumer = await transport.consume({ producerId, rtpCapabilities, paused: false });
-        if (!consumers[socket.id]) consumers[socket.id] = [];
-        consumers[socket.id].push(consumer);
+    if (!transport) {
+      console.log("❌ No recv transport for", socket.id);
+      return cb({});
+    }
 
-        cb({ id: consumer.id, producerId, kind: consumer.kind, rtpParameters: consumer.rtpParameters });
-        console.log("📺 Consumer:", consumer.kind, socket.id);
-      } catch (err) {
-        console.error("❌ consume:", err.message);
-        cb({});
-      }
+    if (!router.canConsume({ producerId, rtpCapabilities })) {
+      console.log("❌ Cannot consume", producerId);
+      return cb({});
+    }
+
+    // ✅ FIXED
+    const consumer = await transport.consume({
+      producerId,
+      rtpCapabilities,
+      paused: true,
     });
 
+    // ✅ IMPORTANT
+    await consumer.resume();
+
+    if (!consumers[socket.id]) {
+      consumers[socket.id] = [];
+    }
+
+    consumers[socket.id].push(consumer);
+
+    cb({
+      id: consumer.id,
+      producerId,
+      kind: consumer.kind,
+      rtpParameters: consumer.rtpParameters,
+    });
+
+    console.log("📺 Consumer:", consumer.kind, socket.id);
+
+  } catch (err) {
+    console.error("❌ consume:", err.message);
+    cb({});
+  }
+});
     /* CHAT */
     socket.on("send-message", ({ message, roomId: clientRoomId }) => {
       if (!message?.trim()) return;

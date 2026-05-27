@@ -315,57 +315,116 @@ export default function MeetingScreen() {
   };
 
   /* ── CONSUME ── */
-  const consumeStream = async (producerId, peerSocketId, peerNameHint) => {
-    const device = deviceRef.current;
-    if (!device || consumersRef.current[producerId]) return;
+ const consumeStream = async (producerId, peerSocketId, peerNameHint) => {
+  const device = deviceRef.current;
 
+  if (!device) {
+    console.log("❌ Device not ready");
+    return;
+  }
+
+  if (consumersRef.current[producerId]) {
+    console.log("⚠️ Already consuming:", producerId);
+    return;
+  }
+
+  try {
     const recvTransport = await getOrCreateRecvTransport(device);
 
     socket.emit(
       "consume",
-      { producerId, rtpCapabilities: device.rtpCapabilities },
+      {
+        producerId,
+        rtpCapabilities: device.rtpCapabilities,
+      },
       async (data) => {
-        if (!data?.id) return;
-
-        const { id: consumerId, kind, rtpParameters } = data;
-        const consumer = await recvTransport.consume({
-          id: consumerId,
-          producerId,
-          kind,
-          rtpParameters,
-        });
-        consumersRef.current[producerId] = consumer;
-
-        const track = consumer.track;
-        const peerName =
-          peerNameHint ||
-          participantsRef.current.find((p) => p.socketId === peerSocketId)?.fullName ||
-          `Guest ${peerSocketId.slice(0, 5)}`;
-
-        setRemotePeers((prev) => {
-          const existing = prev.find((p) => p.socketId === peerSocketId);
-          if (existing) {
-            const hasKind =
-              kind === "video"
-                ? existing.stream.getVideoTracks().length > 0
-                : existing.stream.getAudioTracks().length > 0;
-            if (!hasKind) existing.stream.addTrack(track);
-            return prev.map((p) =>
-              p.socketId === peerSocketId ? { ...p, stream: existing.stream } : p
-            );
+        try {
+          if (!data?.id) {
+            console.log("❌ Invalid consume response");
+            return;
           }
-          return [
-            ...prev,
-            {
+
+          const {
+            id: consumerId,
+            kind,
+            rtpParameters,
+          } = data;
+
+          const consumer = await recvTransport.consume({
+            id: consumerId,
+            producerId,
+            kind,
+            rtpParameters,
+          });
+
+          consumersRef.current[producerId] = consumer;
+
+          // ✅ IMPORTANT FIX
+          if (consumer.resume) {
+            await consumer.resume();
+          }
+
+          const track = consumer.track;
+
+          const peerName =
+            peerNameHint ||
+            participantsRef.current.find(
+              (p) => p.socketId === peerSocketId
+            )?.fullName ||
+            `Guest ${peerSocketId.slice(0, 5)}`;
+
+          setRemotePeers((prev) => {
+            const existing = prev.find(
+              (p) => p.socketId === peerSocketId
+            );
+
+            // ✅ Existing peer stream
+            if (existing) {
+              const hasTrack =
+                kind === "video"
+                  ? existing.stream.getVideoTracks().length > 0
+                  : existing.stream.getAudioTracks().length > 0;
+
+              if (hasTrack) return prev;
+
+              const newStream = new MediaStream(
+                existing.stream.getTracks()
+              );
+
+              newStream.addTrack(track);
+
+              return prev.map((p) =>
+                p.socketId === peerSocketId
+                  ? {
+                      ...p,
+                      stream: newStream,
+                    }
+                  : p
+              );
+            }
+
+            // ✅ New peer stream
+            const newPeer = {
               socketId: peerSocketId,
               name: peerName,
               stream: new MediaStream([track]),
-            },
-          ];
-        });
+            };
+
+            return [...prev, newPeer];
+          });
+
+          console.log(
+            `✅ ${kind} stream received from ${peerName}`
+          );
+        } catch (err) {
+          console.error("❌ Consume stream error:", err);
+        }
       }
     );
-  };
+  } catch (err) {
+    console.error("❌ consumeStream failed:", err);
+  }
+};
 
   /* SCREEN SHARE */
   const startScreenShare = async () => {
@@ -491,7 +550,7 @@ export default function MeetingScreen() {
         {/* VIDEO GRID */}
         <div style={{
           ...S.grid,
-          gridTemplateColumns: remotePeers.length === 0 ? "1fr 1fr"
+          gridTemplateColumns: remotePeers.length === 0 ? "1fr"
             : remotePeers.length <= 1 ? "1fr 1fr"
             : remotePeers.length <= 3 ? "1fr 1fr"
             : "1fr 1fr 1fr",
