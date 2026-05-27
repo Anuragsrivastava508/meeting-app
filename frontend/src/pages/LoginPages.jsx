@@ -200,7 +200,11 @@ const S = {
         marginBottom: 0 
       },
   link:
-   { color: "#534AB7", fontWeight: 600, textDecoration: "none" },
+   { 
+    color: "#534AB7",
+     fontWeight: 600,
+      textDecoration: "none"
+     },
 };
 
 export default LoginPages;
