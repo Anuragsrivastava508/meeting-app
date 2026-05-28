@@ -13,6 +13,7 @@ import LoginPages from './pages/LoginPages';
 import SettingPages from './pages/SettingPages';
 import ProfilePages from './pages/ProfilePages';
 import MeetingScreen from "./pages/MeetingScreen";
+import Footer from "./components/Footer";
 import { useAuthStore } from "./store/useAuthStore";
 
 import { useEffect } from 'react';
@@ -36,16 +37,15 @@ if (isCheckingAuth && !authUser) {
   }
 
   return (
-  <div>
-    {!isMeetingRoute && <Navbar/>}
-    <Routes>
+  <div className="min-h-screen flex flex-col">
+    {!isMeetingRoute && <Navbar />}
 
-      <Route
-  path="/room/:id"
-  element={authUser ? <MeetingScreen /> : <Navigate to="/login" />}
-/>
-    
-   
+    <main className="flex-1 pt-16">
+      <Routes>
+        <Route
+          path="/room/:id"
+          element={authUser ? <MeetingScreen /> : <Navigate to="/login" />}
+        />
         <Route
           path="/"
           element={authUser ? <HomePages /> : <Navigate to="/Login" />}
@@ -64,8 +64,10 @@ if (isCheckingAuth && !authUser) {
           element={authUser ? <ProfilePages /> : <Navigate to="/Login" />}
         />
       </Routes>
+    </main>
 
-      <Toaster />
+    {!isMeetingRoute && <Footer />}
+    <Toaster />
   </div>
   )
 }
