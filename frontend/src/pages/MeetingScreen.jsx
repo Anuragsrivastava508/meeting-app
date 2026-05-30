@@ -480,14 +480,25 @@ export default function MeetingScreen() {
         video: true,
         audio: true,
       });
+
+      const previousStream = localStreamRef.current;
       localStreamRef.current?.getTracks().forEach((t) => t.stop());
       localStreamRef.current = stream;
       if (localVideo.current) localVideo.current.srcObject = stream;
       setMediaError(null);
 
-      if (deviceRef.current && !sendTransportRef.current) {
-        await createSendTransport(stream, deviceRef.current);
+      if (deviceRef.current) {
+        if (!sendTransportRef.current) {
+          await createSendTransport(stream, deviceRef.current);
+        } else {
+          const hasVideoTrack = previousStream?.getVideoTracks().length > 0;
+          const newVideoTrack = stream.getVideoTracks()[0];
+          if (!hasVideoTrack && newVideoTrack) {
+            await sendTransportRef.current.produce({ track: newVideoTrack });
+          }
+        }
       }
+
       toast.success("Camera & microphone enabled");
     } catch (err) {
       toast.error("Permission denied — allow access in browser settings");
