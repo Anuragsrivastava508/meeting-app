@@ -757,15 +757,24 @@ function PBtn({ icon, label, active, badge, onClick }) {
 
 /* STYLES */
 const S = {
-  root: { display: "flex", height: "100vh", background: "#202124", fontFamily: "'Segoe UI',system-ui,sans-serif", overflow: "hidden" },
-  sidebar: { width: 60, background: "#2a2b2e", display: "flex", flexDirection: "column", alignItems: "center", padding: "12px 0", gap: 6, borderRight: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
-  logo: { width: 36, height: 36, borderRadius: 8, background: "#534AB7", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 18, marginBottom: 8 },
-  divider: { width: 32, height: 0.5, background: "rgba(255,255,255,0.1)", margin: "4px 0" },
-  main: { flex: 1, display: "flex", flexDirection: "column", minWidth: 0 },
-  topbar: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 18px", background: "#202124", borderBottom: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0 },
-  topLeft: { display: "flex", alignItems: "center", gap: 12 },
-  topRight: { display: "flex", alignItems: "center", gap: 10 },
-  roomBadge: { background: "rgba(255,255,255,0.07)", color: "#d0d0d0", fontSize: 12, padding: "4px 10px", borderRadius: 20, border: "0.5px solid rgba(255,255,255,0.12)" },
+  root: 
+  { display: "flex", height: "100vh", background: "#202124", fontFamily: "'Segoe UI',system-ui,sans-serif", overflow: "hidden" },
+  sidebar:
+   { width: 60, background: "#2a2b2e", display: "flex", flexDirection: "column", alignItems: "center", padding: "12px 0", gap: 6, borderRight: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
+  logo:
+   { width: 36, height: 36, borderRadius: 8, background: "#534AB7", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 18, marginBottom: 8 },
+  divider:
+   { width: 32, height: 0.5, background: "rgba(255,255,255,0.1)", margin: "4px 0" },
+  main:
+   { flex: 1, display: "flex", flexDirection: "column", minWidth: 0 },
+  topbar: 
+  { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 18px", background: "#202124", borderBottom: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0 },
+  topLeft:
+   { display: "flex", alignItems: "center", gap: 12 },
+  topRight:
+   { display: "flex", alignItems: "center", gap: 10 },
+  roomBadge:
+   { background: "rgba(255,255,255,0.07)", color: "#d0d0d0", fontSize: 12, padding: "4px 10px", borderRadius: 20, border: "0.5px solid rgba(255,255,255,0.12)" },
   recDot: { width: 8, height: 8, borderRadius: "50%", background: "#E24B4A", display: "inline-block" },
   recLabel: { fontSize: 11, color: "#E24B4A", fontWeight: 600, letterSpacing: 1 },
   bellBtn: { width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,0.07)", border: "0.5px solid rgba(255,255,255,0.1)", cursor: "pointer", fontSize: 15 },
