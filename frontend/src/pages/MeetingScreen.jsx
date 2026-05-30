@@ -775,15 +775,24 @@ const S = {
    { display: "flex", alignItems: "center", gap: 10 },
   roomBadge:
    { background: "rgba(255,255,255,0.07)", color: "#d0d0d0", fontSize: 12, padding: "4px 10px", borderRadius: 20, border: "0.5px solid rgba(255,255,255,0.12)" },
-  recDot: { width: 8, height: 8, borderRadius: "50%", background: "#E24B4A", display: "inline-block" },
-  recLabel: { fontSize: 11, color: "#E24B4A", fontWeight: 600, letterSpacing: 1 },
-  bellBtn: { width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,0.07)", border: "0.5px solid rgba(255,255,255,0.1)", cursor: "pointer", fontSize: 15 },
-  profileChip: { display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.05)", border: "0.5px solid rgba(255,255,255,0.12)", borderRadius: 20, padding: "4px 10px 4px 4px", cursor: "pointer" },
-  avatar: { width: 28, height: 28, borderRadius: "50%", objectFit: "cover" },
-  profileName: { fontSize: 13, color: "#d0d0d0" },
-  grid: { flex: 1, display: "grid", gap: 8, padding: 10, overflow: "hidden" },
-  tile: { background: "#2d2e31", borderRadius: 14, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", border: "0.5px solid rgba(255,255,255,0.07)" },
-  video: { width: "100%", height: "100%", objectFit: "cover", borderRadius: 14 },
+  recDot:
+   { width: 8, height: 8, borderRadius: "50%", background: "#E24B4A", display: "inline-block" },
+  recLabel:
+   { fontSize: 11, color: "#E24B4A", fontWeight: 600, letterSpacing: 1 },
+  bellBtn:
+   { width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,0.07)", border: "0.5px solid rgba(255,255,255,0.1)", cursor: "pointer", fontSize: 15 },
+  profileChip:
+   { display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.05)", border: "0.5px solid rgba(255,255,255,0.12)", borderRadius: 20, padding: "4px 10px 4px 4px", cursor: "pointer" },
+  avatar:
+   { width: 28, height: 28, borderRadius: "50%", objectFit: "cover" },
+  profileName: 
+  { fontSize: 13, color: "#d0d0d0" },
+  grid:
+   { flex: 1, display: "grid", gap: 8, padding: 10, overflow: "hidden" },
+  tile:
+   { background: "#2d2e31", borderRadius: 14, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", border: "0.5px solid rgba(255,255,255,0.07)" },
+  video:
+   { width: "100%", height: "100%", objectFit: "cover", borderRadius: 14 },
   tileName: { position: "absolute", bottom: 10, left: 12, fontSize: 12, color: "#e0e0e0", background: "rgba(0,0,0,0.55)", padding: "2px 8px", borderRadius: 10 },
   youTag: { position: "absolute", bottom: 10, right: 12, fontSize: 10, color: "#AFA9EC", background: "rgba(83,74,183,0.3)", padding: "2px 7px", borderRadius: 10, border: "0.5px solid #534AB7" },
   mutedBadge: { position: "absolute", top: 10, right: 10, background: "rgba(226,75,74,0.9)", borderRadius: "50%", width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 },
