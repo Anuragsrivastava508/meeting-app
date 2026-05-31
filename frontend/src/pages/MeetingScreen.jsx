@@ -792,19 +792,48 @@ const S = {
                marginBottom: 8 
               },
   divider:
-   { width: 32, height: 0.5, background: "rgba(255,255,255,0.1)", margin: "4px 0" },
+   { 
+    width: 32,
+     height: 0.5,
+      background: "rgba(255,255,255,0.1)",
+       margin: "4px 0" 
+      },
   main:
-   { flex: 1, display: "flex", flexDirection: "column", minWidth: 0 },
+   { flex: 1, 
+    display: "flex", 
+    flexDirection: "column",
+     minWidth: 0 },
   topbar: 
-  { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 18px", background: "#202124", borderBottom: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0 },
+  { display: "flex",
+     alignItems: "center",
+      justifyContent: "space-between",
+       padding: "10px 18px", 
+       background: "#202124",
+        borderBottom: "0.5px solid rgba(255,255,255,0.07)",
+         flexShrink: 0 },
   topLeft:
-   { display: "flex", alignItems: "center", gap: 12 },
+   { display: "flex", 
+    alignItems: "center",
+     gap: 12 },
   topRight:
-   { display: "flex", alignItems: "center", gap: 10 },
+   { display: "flex", 
+    alignItems: "center",
+     gap: 10 },
   roomBadge:
-   { background: "rgba(255,255,255,0.07)", color: "#d0d0d0", fontSize: 12, padding: "4px 10px", borderRadius: 20, border: "0.5px solid rgba(255,255,255,0.12)" },
+   { background: "rgba(255,255,255,0.07)", 
+    color: "#d0d0d0", 
+    fontSize: 12,
+     padding: "4px 10px",
+      borderRadius: 20,
+       border: "0.5px solid rgba(255,255,255,0.12)"
+       },
   recDot:
-   { width: 8, height: 8, borderRadius: "50%", background: "#E24B4A", display: "inline-block" },
+   { width: 8,
+     height: 8,
+      borderRadius: "50%", 
+      background: "#E24B4A", 
+      display: "inline-block" 
+    },
   recLabel:
    { fontSize: 11, color: "#E24B4A", fontWeight: 600, letterSpacing: 1 },
   bellBtn:
