@@ -848,9 +848,23 @@ const S = {
   personRow: 
   { display: "flex", alignItems: "center", gap: 10, padding: "8px 4px", borderBottom: "0.5px solid rgba(255,255,255,0.05)" },
   pAvatar:
-   { width: 34, height: 34, borderRadius: "50%", objectFit: "cover", flexShrink: 0 },
+   {
+     width: 34,
+      height: 34,
+       borderRadius: "50%",
+        objectFit: "cover", 
+        flexShrink: 0 
+      },
   pName:
-   { flex: 1, fontSize: 13, color: "#d0d0d0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" },
+   {
+     flex: 1,
+     fontSize: 13,
+     color: "#d0d0d0",
+     overflow: "hidden",
+     textOverflow: "ellipsis",
+     whiteSpace: "nowrap" 
+       
+    },
 };
 
 
