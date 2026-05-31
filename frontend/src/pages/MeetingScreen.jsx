@@ -838,13 +838,44 @@ const S = {
   chatInput:
    { display: "flex", alignItems: "center", gap: 6, padding: "10px 10px 14px", borderTop: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
   input:
-   { flex: 1, background: "rgba(255,255,255,0.06)", border: "0.5px solid rgba(255,255,255,0.12)", borderRadius: 20, padding: "7px 12px", fontSize: 13, color: "#e0e0e0", outline: "none" },
+   { 
+    flex: 1,
+    background: "rgba(255,255,255,0.06)",
+     border: "0.5px solid rgba(255,255,255,0.12)",
+     borderRadius: 20,
+     padding: "7px 12px", 
+    fontSize: 13,
+     color: "#e0e0e0", 
+    outline: "none" 
+  },
   sendBtn:
-   { width: 34, height: 34, borderRadius: "50%", background: "#534AB7", border: "none", cursor: "pointer", color: "#fff", fontSize: 16, flexShrink: 0 },
+   { 
+    width: 34,
+     height: 34,
+      borderRadius: "50%",
+       background: "#534AB7",
+        border: "none",
+         cursor: "pointer",
+          color: "#fff",
+           fontSize: 16, 
+           flexShrink: 0 },
   peopleList:
-   { flex: 1, overflowY: "auto", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 2 },
+   { 
+    flex: 1,
+     overflowY: "auto",
+      padding: "12px 10px",
+       display: "flex",
+        flexDirection: "column",
+         gap: 2 
+        },
   peopleHeader:
-   { fontSize: 12, color: "#666", padding: "0 4px 10px", borderBottom: "0.5px solid rgba(255,255,255,0.06)", marginBottom: 6 },
+   { 
+    fontSize: 12,
+     color: "#666",
+      padding: "0 4px 10px",
+       borderBottom: "0.5px solid rgba(255,255,255,0.06)",
+        marginBottom: 6 
+      },
   personRow: 
   { 
     display: "flex",
