@@ -846,7 +846,13 @@ const S = {
   peopleHeader:
    { fontSize: 12, color: "#666", padding: "0 4px 10px", borderBottom: "0.5px solid rgba(255,255,255,0.06)", marginBottom: 6 },
   personRow: 
-  { display: "flex", alignItems: "center", gap: 10, padding: "8px 4px", borderBottom: "0.5px solid rgba(255,255,255,0.05)" },
+  { 
+    display: "flex",
+     alignItems: "center",
+      gap: 10,
+       padding: "8px 4px",
+        borderBottom: "0.5px solid rgba(255,255,255,0.05)" 
+      },
   pAvatar:
    {
      width: 34,
