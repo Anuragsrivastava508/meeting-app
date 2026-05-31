@@ -758,11 +758,39 @@ function PBtn({ icon, label, active, badge, onClick }) {
 /* STYLES */
 const S = {
   root: 
-  { display: "flex", height: "100vh", background: "#202124", fontFamily: "'Segoe UI',system-ui,sans-serif", overflow: "hidden" },
+  { 
+    display: "flex",
+     height: "100vh",
+      background: "#202124",
+       fontFamily: "'Segoe UI',system-ui,sans-serif",
+        overflow: "hidden" 
+      },
   sidebar:
-   { width: 60, background: "#2a2b2e", display: "flex", flexDirection: "column", alignItems: "center", padding: "12px 0", gap: 6, borderRight: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
+   { 
+    width: 60,
+     background: "#2a2b2e", 
+     display: "flex", 
+     flexDirection: "column", 
+     alignItems: "center",
+      padding: "12px 0", 
+      gap: 6, 
+      borderRight: "0.5px solid rgba(255,255,255,0.08)",
+       flexShrink: 0 
+      },
   logo:
-   { width: 36, height: 36, borderRadius: 8, background: "#534AB7", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 18, marginBottom: 8 },
+   {
+     width: 36,
+      height: 36,
+       borderRadius: 8,
+        background: "#534AB7",
+         color: "#fff",
+          display: "flex",
+           alignItems: "center",
+            justifyContent: "center",
+             fontWeight: 700,
+              fontSize: 18,
+               marginBottom: 8 
+              },
   divider:
    { width: 32, height: 0.5, background: "rgba(255,255,255,0.1)", margin: "4px 0" },
   main:
