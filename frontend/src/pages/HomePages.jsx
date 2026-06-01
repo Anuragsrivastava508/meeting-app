@@ -195,25 +195,41 @@ function Card({ emoji, title, desc }) {
 
 /* ── styles ── */
 const S = {
-  page:    { minHeight:"100vh", background:"var(--color-background-primary)", fontFamily:"'Segoe UI',system-ui,sans-serif", display:"flex", flexDirection:"column" },
-  topbar:  { display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", borderBottom:"0.5px solid var(--color-border-tertiary)", background:"var(--color-background-primary)", position:"sticky", top:0, zIndex:50 },
-  topLeft: { display:"flex", alignItems:"center" },
-  logoWrap:{ display:"flex", alignItems:"center", gap:10 },
-  logoText:{ fontSize:20, fontWeight:500, color:"var(--color-text-primary)" },
-  topRight:{ display:"flex", alignItems:"center", gap:4 },
-  clock:   { fontSize:13, color:"var(--color-text-secondary)", marginRight:8 },
-  avatar:  { width:36, height:36, borderRadius:"50%", background:"#534AB7", color:"#EEEDFE", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:500, cursor:"pointer", marginLeft:6 },
+  page:   
+   { minHeight:"100vh", background:"var(--color-background-primary)", fontFamily:"'Segoe UI',system-ui,sans-serif", display:"flex", flexDirection:"column" },
+  topbar: 
+   { display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", borderBottom:"0.5px solid var(--color-border-tertiary)", background:"var(--color-background-primary)", position:"sticky", top:0, zIndex:50 },
+  topLeft:
+   { display:"flex", alignItems:"center" },
+  logoWrap:
+  { display:"flex", alignItems:"center", gap:10 },
+  logoText:
+  { fontSize:20, fontWeight:500, color:"var(--color-text-primary)" },
+  topRight:
+  { display:"flex", alignItems:"center", gap:4 },
+  clock:
+     { fontSize:13, color:"var(--color-text-secondary)", marginRight:8 },
+  avatar: 
+   { width:36, height:36, borderRadius:"50%", background:"#534AB7", color:"#EEEDFE", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:500, cursor:"pointer", marginLeft:6 },
 
-  layout:  { display:"flex", flex:1 },
-  sidebar: { width:230, padding:"12px 8px", borderRight:"0.5px solid var(--color-border-tertiary)", display:"flex", flexDirection:"column", gap:4, flexShrink:0 },
-  main:    { flex:1, display:"flex", flexDirection:"column", alignItems:"center", padding:"60px 24px 48px", textAlign:"center" },
+  layout: 
+   { display:"flex", flex:1 },
+  sidebar: 
+  { width:230, padding:"12px 8px", borderRight:"0.5px solid var(--color-border-tertiary)", display:"flex", flexDirection:"column", gap:4, flexShrink:0 },
+  main:   
+   { flex:1, display:"flex", flexDirection:"column", alignItems:"center", padding:"60px 24px 48px", textAlign:"center" },
 
-  title:   { fontSize:42, fontWeight:400, color:"var(--color-text-primary)", margin:"0 0 14px", lineHeight:1.2, letterSpacing:"-0.5px" },
-  sub:     { fontSize:16, color:"var(--color-text-secondary)", margin:"0 0 36px", lineHeight:1.6 },
+  title:
+     { fontSize:42, fontWeight:400, color:"var(--color-text-primary)", margin:"0 0 14px", lineHeight:1.2, letterSpacing:"-0.5px" },
+  sub:    
+   { fontSize:16, color:"var(--color-text-secondary)", margin:"0 0 36px", lineHeight:1.6 },
 
-  actionRow:{ display:"flex", alignItems:"center", gap:12, flexWrap:"wrap", justifyContent:"center", position:"relative", zIndex:10 },
-  newBtn:   { display:"flex", alignItems:"center", gap:8, padding:"0 24px", height:48, borderRadius:24, background:"#1B6CA8", color:"#fff", border:"none", cursor:"pointer", fontSize:15, fontWeight:500 },
-  backdrop: { position:"fixed", inset:0, zIndex:98 },
+  actionRow:
+  { display:"flex", alignItems:"center", gap:12, flexWrap:"wrap", justifyContent:"center", position:"relative", zIndex:10 },
+  newBtn: 
+    { display:"flex", alignItems:"center", gap:8, padding:"0 24px", height:48, borderRadius:24, background:"#1B6CA8", color:"#fff", border:"none", cursor:"pointer", fontSize:15, fontWeight:500 },
+  backdrop: 
+  { position:"fixed", inset:0, zIndex:98 },
   dropdown: { position:"absolute", top:"calc(100% + 8px)", left:0, background:"var(--color-background-primary)", border:"0.5px solid var(--color-border-secondary)", borderRadius:14, minWidth:290, zIndex:99, overflow:"hidden", boxShadow:"0 8px 24px rgba(0,0,0,0.12)" },
 
   joinBox:  { display:"flex", alignItems:"center", height:48, borderRadius:24, border:"1.5px solid var(--color-border-primary)", background:"var(--color-background-primary)", paddingLeft:16, gap:8, overflow:"hidden" },
@@ -227,5 +243,3 @@ const S = {
 };
 
 export default HomePages;
-
-
