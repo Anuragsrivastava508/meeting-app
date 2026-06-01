@@ -230,16 +230,42 @@ const S = {
     { display:"flex", alignItems:"center", gap:8, padding:"0 24px", height:48, borderRadius:24, background:"#1B6CA8", color:"#fff", border:"none", cursor:"pointer", fontSize:15, fontWeight:500 },
   backdrop: 
   { position:"fixed", inset:0, zIndex:98 },
-  dropdown: { position:"absolute", top:"calc(100% + 8px)", left:0, background:"var(--color-background-primary)", border:"0.5px solid var(--color-border-secondary)", borderRadius:14, minWidth:290, zIndex:99, overflow:"hidden", boxShadow:"0 8px 24px rgba(0,0,0,0.12)" },
+  dropdown:
+   { position:"absolute", top:"calc(100% + 8px)", left:0, background:"var(--color-background-primary)", border:"0.5px solid var(--color-border-secondary)", borderRadius:14, minWidth:290, zIndex:99, overflow:"hidden", boxShadow:"0 8px 24px rgba(0,0,0,0.12)" },
 
-  joinBox:  { display:"flex", alignItems:"center", height:48, borderRadius:24, border:"1.5px solid var(--color-border-primary)", background:"var(--color-background-primary)", paddingLeft:16, gap:8, overflow:"hidden" },
-  joinInput:{ border:"none", outline:"none", fontSize:14, background:"transparent", color:"var(--color-text-primary)", width:200 },
-  joinBtn:  { height:"100%", padding:"0 20px", border:"none", fontSize:14, fontWeight:500, cursor:"pointer", background:"transparent" },
-  joinBtnOn:{ color:"#1B6CA8", cursor:"pointer" },
-  joinBtnOff:{ color:"var(--color-text-secondary)", cursor:"not-allowed" },
+  joinBox: 
+   { display:"flex", alignItems:"center", height:48, borderRadius:24, border:"1.5px solid var(--color-border-primary)", background:"var(--color-background-primary)", paddingLeft:16, gap:8, overflow:"hidden" },
+  joinInput:
+  { border:"none", outline:"none", fontSize:14, background:"transparent", color:"var(--color-text-primary)", width:200 },
+  joinBtn: 
+   { height:"100%", padding:"0 20px", border:"none", fontSize:14, fontWeight:500, cursor:"pointer", background:"transparent" },
+  joinBtnOn:
+  { color:"#1B6CA8",
+     cursor:"pointer" 
+    },
+  joinBtnOff:
+  { 
+    color:"var(--color-text-secondary)",
+     cursor:"not-allowed" 
+    },
 
-  hr:    { width:"100%", maxWidth:700, border:"none", borderTop:"0.5px solid var(--color-border-tertiary)", margin:"40px 0 32px" },
-  cards: { display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, width:"100%", maxWidth:700, textAlign:"left" },
+  hr: 
+     { 
+      width:"100%",
+       maxWidth:700,
+        border:"none",
+         borderTop:"0.5px solid var(--color-border-tertiary)",
+          margin:"40px 0 32px" 
+        },
+  cards: {
+     display:"grid",
+     gridTemplateColumns:"repeat(3,1fr)",
+     gap:16,
+     width:"100%",
+     maxWidth:700,
+     textAlign:"left"
+
+   },
 };
 
 export default HomePages;
