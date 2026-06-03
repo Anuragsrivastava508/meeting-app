@@ -168,7 +168,14 @@ const S = {
      fontWeight: 500 
     },
   right:
-   { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
+   {
+     flex: 1, 
+     display: "flex",
+      alignItems: "center",
+       justifyContent: "center",
+        padding: 24,
+         background: "#f8f9ff" 
+        },
   card:
    { width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: 40, boxShadow: "0 8px 40px rgba(83,74,183,0.12)" },
   cardHeader:
