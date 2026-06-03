@@ -209,7 +209,11 @@ const S = {
      margin: "0 0 8px" 
     },
   desc:
-   { fontSize: 14, color: "#888", margin: 0 },
+   { 
+    fontSize: 14, 
+    color: "#888",
+     margin: 0 
+    },
   form:
    { 
     display: "flex", 
