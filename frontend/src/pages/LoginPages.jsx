@@ -162,19 +162,31 @@ const S = {
    {
      fontSize: 20 
     },
-  fLabel: { fontSize: 15, fontWeight: 500 },
-  right: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
-  card: { width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: 40, boxShadow: "0 8px 40px rgba(83,74,183,0.12)" },
-  cardHeader: { textAlign: "center", marginBottom: 32 },
-  iconBox: { width: 56, height: 56, borderRadius: 16, background: "rgba(83,74,183,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" },
-  title: { fontSize: 24, fontWeight: 700, color: "#1a1a2e", margin: "0 0 8px" },
-  desc: { fontSize: 14, color: "#888", margin: 0 },
-  form: { display: "flex", flexDirection: "column", gap: 20 },
-  field: { display: "flex", flexDirection: "column", gap: 8 },
+  fLabel: 
+  { fontSize: 15, fontWeight: 500 },
+  right:
+   { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
+  card:
+   { width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: 40, boxShadow: "0 8px 40px rgba(83,74,183,0.12)" },
+  cardHeader:
+   { textAlign: "center", marginBottom: 32 },
+  iconBox:
+   { width: 56, height: 56, borderRadius: 16, background: "rgba(83,74,183,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" },
+  title: 
+  { fontSize: 24, fontWeight: 700, color: "#1a1a2e", margin: "0 0 8px" },
+  desc:
+   { fontSize: 14, color: "#888", margin: 0 },
+  form:
+   { display: "flex", flexDirection: "column", gap: 20 },
+  field:
+   { display: "flex", flexDirection: "column", gap: 8 },
   label: { fontSize: 14, fontWeight: 600, color: "#374151" },
-  inputWrap: { position: "relative", display: "flex", alignItems: "center" },
-  inputIcon: { position: "absolute", left: 14, pointerEvents: "none" },
-  input: { width: "100%", padding: "12px 14px 12px 40px", borderRadius: 12, border: "1.5px solid #e5e7eb", fontSize: 14, outline: "none", boxSizing: "border-box", transition: "border-color 0.2s", background: "#f9fafb" },
+  inputWrap:
+   { position: "relative", display: "flex", alignItems: "center" },
+  inputIcon:
+   { position: "absolute", left: 14, pointerEvents: "none" },
+  input: 
+  { width: "100%", padding: "12px 14px 12px 40px", borderRadius: 12, border: "1.5px solid #e5e7eb", fontSize: 14, outline: "none", boxSizing: "border-box", transition: "border-color 0.2s", background: "#f9fafb" },
   eyeBtn: 
   { position: "absolute",
      right: 12,
