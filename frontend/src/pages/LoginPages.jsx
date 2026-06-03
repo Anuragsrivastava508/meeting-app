@@ -191,7 +191,16 @@ const S = {
      marginBottom: 32 
     },
   iconBox:
-   { width: 56, height: 56, borderRadius: 16, background: "rgba(83,74,183,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" },
+   { 
+    width: 56,
+     height: 56, 
+     borderRadius: 16,
+      background: "rgba(83,74,183,0.1)",
+       display: "flex",
+        alignItems: "center",
+         justifyContent: "center",
+          margin: "0 auto 16px" 
+        },
   title: 
   { fontSize: 24, fontWeight: 700, color: "#1a1a2e", margin: "0 0 8px" },
   desc:
