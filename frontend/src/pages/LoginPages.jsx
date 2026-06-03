@@ -213,10 +213,23 @@ const S = {
   form:
    { display: "flex", flexDirection: "column", gap: 20 },
   field:
-   { display: "flex", flexDirection: "column", gap: 8 },
-  label: { fontSize: 14, fontWeight: 600, color: "#374151" },
+   {
+     display: "flex",
+     flexDirection: "column",
+      gap: 8 
+    },
+  label: 
+  {
+     fontSize: 14,
+      fontWeight: 600, 
+      color: "#374151" 
+    },
   inputWrap:
-   { position: "relative", display: "flex", alignItems: "center" },
+   {
+     position: "relative",
+     display: "flex", 
+     alignItems: "center" 
+    },
   inputIcon:
    {
      position: "absolute",
