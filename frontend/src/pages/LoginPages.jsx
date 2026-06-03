@@ -202,7 +202,12 @@ const S = {
           margin: "0 auto 16px" 
         },
   title: 
-  { fontSize: 24, fontWeight: 700, color: "#1a1a2e", margin: "0 0 8px" },
+  { 
+    fontSize: 24,
+     fontWeight: 700, 
+     color: "#1a1a2e", 
+     margin: "0 0 8px" 
+    },
   desc:
    { fontSize: 14, color: "#888", margin: 0 },
   form:
