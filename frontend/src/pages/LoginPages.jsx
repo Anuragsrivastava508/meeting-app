@@ -177,9 +177,19 @@ const S = {
          background: "#f8f9ff" 
         },
   card:
-   { width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: 40, boxShadow: "0 8px 40px rgba(83,74,183,0.12)" },
+   { 
+    width: "100%",
+     maxWidth: 420, 
+     background: "#fff",
+      borderRadius: 20, 
+      padding: 40,
+       boxShadow: "0 8px 40px rgba(83,74,183,0.12)" 
+      },
   cardHeader:
-   { textAlign: "center", marginBottom: 32 },
+   { 
+    textAlign: "center",
+     marginBottom: 32 
+    },
   iconBox:
    { width: 56, height: 56, borderRadius: 16, background: "rgba(83,74,183,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" },
   title: 
