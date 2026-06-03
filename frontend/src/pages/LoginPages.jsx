@@ -163,7 +163,10 @@ const S = {
      fontSize: 20 
     },
   fLabel: 
-  { fontSize: 15, fontWeight: 500 },
+  { 
+    fontSize: 15,
+     fontWeight: 500 
+    },
   right:
    { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8f9ff" },
   card:
