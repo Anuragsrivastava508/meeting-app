@@ -929,10 +929,28 @@ const S = {
      display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "center" },
   leaveBtn:
    {
-     display: "flex", flexDirection: "column", alignItems: "center", gap: 3, background: "rgba(226,75,74,0.15)", border: "0.5px solid rgba(226,75,74,0.5)", borderRadius: 10, padding: "7px 14px", cursor: "pointer", color: "#e24b4a", fontSize: 14, fontWeight: 500, minWidth: 60 },
+     display: "flex",
+      flexDirection: "column", 
+      alignItems: "center", 
+      gap: 3, 
+      background: "rgba(226,75,74,0.15)", 
+      border: "0.5px solid rgba(226,75,74,0.5)", 
+      borderRadius: 10, 
+      padding: "7px 14px", 
+      cursor: "pointer", 
+      color: "#e24b4a", 
+      fontSize: 14, 
+      fontWeight: 500, 
+      minWidth: 60 
+    },
   panelBtns:
    {
-     display: "flex", alignItems: "center", gap: 6, minWidth: 100, justifyContent: "flex-end" },
+     display: "flex", 
+     alignItems: "center", 
+     gap: 6, 
+     minWidth: 100, 
+     justifyContent: "flex-end" 
+    },
   panel:
    {
      width: 290, 
