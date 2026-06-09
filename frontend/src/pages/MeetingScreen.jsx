@@ -923,10 +923,19 @@ const S = {
     display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", background: "#202124", borderTop: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0, gap: 8 },
   timer:
    {
-     fontSize: 13, color: "#888", minWidth: 70, fontVariantNumeric: "tabular-nums" },
+     fontSize: 13, 
+     color: "#888", 
+     minWidth: 70, 
+     fontVariantNumeric: "tabular-nums" 
+    },
   ctrlGroup:
    {
-     display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "center" },
+     display: "flex", 
+     alignItems: "center", 
+     gap: 6, 
+     flexWrap: "wrap", 
+     justifyContent: "center" 
+    },
   leaveBtn:
    {
      display: "flex",
