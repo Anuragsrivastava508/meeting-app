@@ -896,39 +896,100 @@ const S = {
      borderRadius: 14 
     },
   tileName: 
-  { position: "absolute", bottom: 10, left: 12, fontSize: 12, color: "#e0e0e0", background: "rgba(0,0,0,0.55)", padding: "2px 8px", borderRadius: 10 },
+  {
+     position: "absolute",
+      bottom: 10,
+       left: 12,
+        fontSize: 12,
+         color: "#e0e0e0",
+         background: "rgba(0,0,0,0.55)",
+          padding: "2px 8px",
+           borderRadius: 10
+           },
   youTag:
-   { position: "absolute", bottom: 10, right: 12, fontSize: 10, color: "#AFA9EC", background: "rgba(83,74,183,0.3)", padding: "2px 7px", borderRadius: 10, border: "0.5px solid #534AB7" },
+   { 
+    position: "absolute", bottom: 10, right: 12, fontSize: 10, color: "#AFA9EC", background: "rgba(83,74,183,0.3)", padding: "2px 7px", borderRadius: 10, border: "0.5px solid #534AB7" },
   mutedBadge:
-   { position: "absolute", top: 10, right: 10, background: "rgba(226,75,74,0.9)", borderRadius: "50%", width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 },
+   {
+     position: "absolute", top: 10, right: 10, background: "rgba(226,75,74,0.9)", borderRadius: "50%", width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 },
   emptyTile:
-   { background: "#2a2b2e", borderRadius: 14, border: "1px dashed rgba(255,255,255,0.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" },
+   {
+     background: "#2a2b2e", borderRadius: 14, border: "1px dashed rgba(255,255,255,0.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" },
   mediaBlock:
-   { position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.75)", padding: 16, textAlign: "center", color: "#e0e0e0" },
+   {
+     position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.75)", padding: 16, textAlign: "center", color: "#e0e0e0" },
   controls: 
-  { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", background: "#202124", borderTop: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0, gap: 8 },
+  { 
+    display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", background: "#202124", borderTop: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0, gap: 8 },
   timer:
-   { fontSize: 13, color: "#888", minWidth: 70, fontVariantNumeric: "tabular-nums" },
+   {
+     fontSize: 13, color: "#888", minWidth: 70, fontVariantNumeric: "tabular-nums" },
   ctrlGroup:
-   { display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "center" },
+   {
+     display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "center" },
   leaveBtn:
-   { display: "flex", flexDirection: "column", alignItems: "center", gap: 3, background: "rgba(226,75,74,0.15)", border: "0.5px solid rgba(226,75,74,0.5)", borderRadius: 10, padding: "7px 14px", cursor: "pointer", color: "#e24b4a", fontSize: 14, fontWeight: 500, minWidth: 60 },
+   {
+     display: "flex", flexDirection: "column", alignItems: "center", gap: 3, background: "rgba(226,75,74,0.15)", border: "0.5px solid rgba(226,75,74,0.5)", borderRadius: 10, padding: "7px 14px", cursor: "pointer", color: "#e24b4a", fontSize: 14, fontWeight: 500, minWidth: 60 },
   panelBtns:
-   { display: "flex", alignItems: "center", gap: 6, minWidth: 100, justifyContent: "flex-end" },
+   {
+     display: "flex", alignItems: "center", gap: 6, minWidth: 100, justifyContent: "flex-end" },
   panel:
-   { width: 290, background: "#2a2b2e", display: "flex", flexDirection: "column", borderLeft: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
+   {
+     width: 290, 
+     background: "#2a2b2e", 
+     display: "flex", 
+     flexDirection: "column", 
+     borderLeft: "0.5px solid rgba(255,255,255,0.08)", 
+     flexShrink: 0 
+    },
   tabs:
-   { display: "flex", borderBottom: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
+   {
+     display: "flex", 
+     borderBottom: "0.5px solid rgba(255,255,255,0.08)", 
+     flexShrink: 0 
+    },
   tab:
-   { flex: 1, padding: "11px 4px", textAlign: "center", fontSize: 12, color: "#888", cursor: "pointer", background: "transparent", border: "none", borderBottom: "2px solid transparent" },
+   {
+     flex: 1, 
+     padding: "11px 4px", 
+     textAlign: "center", 
+     fontSize: 12, 
+     color: "#888", 
+     cursor: "pointer", 
+     background: "transparent", 
+     border: "none", 
+     borderBottom: "2px solid transparent" 
+    },
   tabActive:
-   { color: "#AFA9EC", borderBottomColor: "#534AB7" },
+   {
+     color: "#AFA9EC", 
+     borderBottomColor: "#534AB7" 
+    },
   tabBadge:
-   { background: "rgba(255,255,255,0.1)", color: "#aaa", fontSize: 10, padding: "1px 5px", borderRadius: 10, marginLeft: 3 },
+   {
+     background: "rgba(255,255,255,0.1)",
+      color: "#aaa", 
+      fontSize: 10, 
+      padding: "1px 5px", 
+      borderRadius: 10, 
+      marginLeft: 3 
+    },
   chatBody:
-   { flex: 1, overflowY: "auto", padding: 12, display: "flex", flexDirection: "column", gap: 10 },
+   {
+     flex: 1, 
+     overflowY: "auto", 
+     padding: 12, 
+     display: "flex", 
+     flexDirection: "column",
+      gap: 10 
+    },
   empty:
-   { textAlign: "center", color: "#555", fontSize: 13, marginTop: 24 },
+   {
+     textAlign: "center", 
+     color: "#555", 
+     fontSize: 13, 
+     marginTop: 24 
+    },
   msgWrap:
    { display: "flex", flexDirection: "column", gap: 3 },
   msgUser:
