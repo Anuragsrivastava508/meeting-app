@@ -934,10 +934,27 @@ const S = {
     },
   emptyTile:
    {
-     background: "#2a2b2e", borderRadius: 14, border: "1px dashed rgba(255,255,255,0.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" },
+     background: "#2a2b2e", 
+     borderRadius: 14, 
+     border: "1px dashed rgba(255,255,255,0.1)", 
+     display: "flex", 
+     flexDirection: "column", 
+     alignItems: "center", 
+     justifyContent: "center" 
+    },
   mediaBlock:
    {
-     position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.75)", padding: 16, textAlign: "center", color: "#e0e0e0" },
+     position: "absolute", 
+     inset: 0, 
+     display: "flex", 
+     flexDirection: "column", 
+     alignItems: "center", 
+     justifyContent: "center", 
+     background: "rgba(0,0,0,0.75)", 
+     padding: 16, 
+     textAlign: "center", 
+     color: "#e0e0e0" 
+    },
   controls: 
   { 
     display: "flex", 
