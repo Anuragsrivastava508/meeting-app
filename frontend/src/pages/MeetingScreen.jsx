@@ -908,10 +908,30 @@ const S = {
            },
   youTag:
    { 
-    position: "absolute", bottom: 10, right: 12, fontSize: 10, color: "#AFA9EC", background: "rgba(83,74,183,0.3)", padding: "2px 7px", borderRadius: 10, border: "0.5px solid #534AB7" },
+    position: "absolute", 
+    bottom: 10, 
+    right: 12, 
+    fontSize: 10, 
+    color: "#AFA9EC", 
+    background: "rgba(83,74,183,0.3)", 
+    padding: "2px 7px", 
+    borderRadius: 10, 
+    border: "0.5px solid #534AB7" 
+  },
   mutedBadge:
    {
-     position: "absolute", top: 10, right: 10, background: "rgba(226,75,74,0.9)", borderRadius: "50%", width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 },
+     position: "absolute", 
+     top: 10, 
+     right: 10, 
+     background: "rgba(226,75,74,0.9)", 
+     borderRadius: "50%", 
+     width: 24, 
+     height: 24, 
+     display: "flex", 
+     alignItems: "center", 
+     justifyContent: "center", 
+     fontSize: 12 
+    },
   emptyTile:
    {
      background: "#2a2b2e", borderRadius: 14, border: "1px dashed rgba(255,255,255,0.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" },
