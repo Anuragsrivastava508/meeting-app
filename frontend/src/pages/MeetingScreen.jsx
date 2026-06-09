@@ -920,7 +920,15 @@ const S = {
      position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.75)", padding: 16, textAlign: "center", color: "#e0e0e0" },
   controls: 
   { 
-    display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", background: "#202124", borderTop: "0.5px solid rgba(255,255,255,0.07)", flexShrink: 0, gap: 8 },
+    display: "flex", 
+    alignItems: "center", 
+    justifyContent: "space-between", 
+    padding: "10px 16px", 
+    background: "#202124", 
+    borderTop: "0.5px solid rgba(255,255,255,0.07)", 
+    flexShrink: 0, 
+    gap: 8 
+  },
   timer:
    {
      fontSize: 13, 
