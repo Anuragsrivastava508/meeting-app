@@ -1116,10 +1116,11 @@ const S = {
     borderRadius: "50%",
     background: "#534AB7",
     border: "none",
-         cursor: "pointer",
-          color: "#fff",
-           fontSize: 16, 
-    flexShrink: 0 },
+    cursor: "pointer",
+    color: "#fff",
+    fontSize: 16, 
+    flexShrink: 0 
+      },
   peopleList:
    { 
     flex: 1,
