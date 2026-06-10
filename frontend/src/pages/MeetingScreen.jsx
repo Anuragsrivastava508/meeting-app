@@ -760,22 +760,22 @@ const S = {
   root: 
   { 
     display: "flex",
-     height: "100vh",
-      background: "#202124",
-       fontFamily: "'Segoe UI',system-ui,sans-serif",
-        overflow: "hidden" 
+    height: "100vh",
+    background: "#202124",
+    fontFamily: "'Segoe UI',system-ui,sans-serif",
+    overflow: "hidden" 
       },
   sidebar:
    { 
     width: 60,
-     background: "#2a2b2e", 
-     display: "flex", 
-     flexDirection: "column", 
-     alignItems: "center",
-      padding: "12px 0", 
-      gap: 6, 
-      borderRight: "0.5px solid rgba(255,255,255,0.08)",
-       flexShrink: 0 
+    background: "#2a2b2e", 
+    display: "flex", 
+    flexDirection: "column", 
+    alignItems: "center",
+    padding: "12px 0", 
+    gap: 6, 
+    borderRight: "0.5px solid rgba(255,255,255,0.08)",
+    flexShrink: 0 
       },
   logo:
    {
