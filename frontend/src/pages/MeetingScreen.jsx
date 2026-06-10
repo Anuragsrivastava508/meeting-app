@@ -1123,35 +1123,35 @@ const S = {
   peopleList:
    { 
     flex: 1,
-     overflowY: "auto",
-      padding: "12px 10px",
-       display: "flex",
-        flexDirection: "column",
-         gap: 2 
+    overflowY: "auto",
+    padding: "12px 10px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2 
         },
   peopleHeader:
    { 
     fontSize: 12,
-     color: "#666",
-      padding: "0 4px 10px",
-       borderBottom: "0.5px solid rgba(255,255,255,0.06)",
-        marginBottom: 6 
+    color: "#666",
+    padding: "0 4px 10px",
+    borderBottom: "0.5px solid rgba(255,255,255,0.06)",
+    marginBottom: 6 
       },
   personRow: 
   { 
     display: "flex",
-     alignItems: "center",
-      gap: 10,
-       padding: "8px 4px",
-        borderBottom: "0.5px solid rgba(255,255,255,0.05)" 
+    alignItems: "center",
+    gap: 10,
+    padding: "8px 4px",
+    borderBottom: "0.5px solid rgba(255,255,255,0.05)" 
       },
   pAvatar:
    {
      width: 34,
-      height: 34,
-       borderRadius: "50%",
-        objectFit: "cover", 
-        flexShrink: 0 
+     height: 34,
+     borderRadius: "50%",
+     objectFit: "cover", 
+     flexShrink: 0 
       },
   pName:
    {
