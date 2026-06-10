@@ -1040,11 +1040,11 @@ const S = {
   tabBadge:
    {
      background: "rgba(255,255,255,0.1)",
-      color: "#aaa", 
-      fontSize: 10, 
-      padding: "1px 5px", 
-      borderRadius: 10, 
-      marginLeft: 3 
+     color: "#aaa", 
+     fontSize: 10, 
+     padding: "1px 5px", 
+     borderRadius: 10, 
+     marginLeft: 3 
     },
   chatBody:
    {
@@ -1063,15 +1063,41 @@ const S = {
      marginTop: 24 
     },
   msgWrap:
-   { display: "flex", flexDirection: "column", gap: 3 },
+   {
+     display: "flex", 
+     flexDirection: "column", 
+     gap: 3 
+    },
   msgUser:
-   { fontSize: 11, color: "#666", paddingLeft: 4 },
+   {
+     fontSize: 11, 
+     color: "#666",
+      paddingLeft: 4 
+    },
   bubble:
-   { background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "7px 10px", fontSize: 13, color: "#d0d0d0", maxWidth: "90%", wordBreak: "break-word" },
+   { 
+    background: "rgba(255,255,255,0.07)", 
+    borderRadius: 10, 
+    padding: "7px 10px", 
+    fontSize: 13, 
+    color: "#d0d0d0", 
+    maxWidth: "90%", 
+    wordBreak: "break-word" 
+  },
   bubbleMe:
-   { background: "rgba(83,74,183,0.25)", border: "0.5px solid rgba(83,74,183,0.4)" },
+   {
+     background: "rgba(83,74,183,0.25)", 
+     border: "0.5px solid rgba(83,74,183,0.4)" 
+    },
   chatInput:
-   { display: "flex", alignItems: "center", gap: 6, padding: "10px 10px 14px", borderTop: "0.5px solid rgba(255,255,255,0.08)", flexShrink: 0 },
+   {
+     display: "flex", 
+     alignItems: "center", 
+     gap: 6, 
+     padding: "10px 10px 14px", 
+     borderTop: "0.5px solid rgba(255,255,255,0.08)", 
+     flexShrink: 0 
+    },
   input:
    { 
     flex: 1,
