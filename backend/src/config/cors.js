@@ -11,6 +11,8 @@ export const allowedOrigins = [
   "https://meeting-app-kohl-omega.vercel.app",
 ];
 
+
+
 export const corsOptions = {
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
